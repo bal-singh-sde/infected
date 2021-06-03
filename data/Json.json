@@ -6,7 +6,7 @@
     "description": "you are at the Park. You see people with no mask and a dirty mask on the ground. You have the option to get dirtymask and or go west or south"
   },
   "grocerystore": {
-    "description": "you are at the grocerystore. You see sanitizers(lower you contamination level by 5). You have to get sanitizer and or go east"
+    "description": "you are at the grocery store. You see sanitizers(lower you contamination level by 5). You have to get sanitizer and or go east"
   },
   "lake": {
     "description": "you are at the lake. It is blue and beautiful and you see no items to interact with. You have the option to go west"
@@ -39,6 +39,6 @@
     "description": "you are on West Lake Block Two. you have the option to go west or north"
   },
   "westlakeblockone": {
-    "description": "you are on WestLakeBlockOne. you have the option to go west, south, or north"
+    "description": "you are on West Lake Block One. you have the option to go west, south, or north"
   }
 }
