@@ -15,28 +15,28 @@
     "description": "you are at the clinic. There is a lot of busy nurses. You see and sign label vaccine 1 and see a vaccineNumber1 on the counter. You can get vaccine1 and or you have the option to go east"
   },
   "vaccinesite": {
-    "description": "you are at the vaccinesite. You see CDC personnel and sign label vaccine 2 and see a vaccineNumber2 on the counter. You can get vaccine2 and or you have the option to go south."
+    "description": "you are at the vaccine site. You see CDC personnel and sign label vaccine 2 and see a vaccineNumber2 on the counter. You can get vaccine2 and or you have the option to go south."
   },
   "mainblocktwo": {
-    "description": "you are on MainBlockTwo. you have the option to go east, west, or north"
+    "description": "you are on Main Block Two. you have the option to go east, west, or north"
   },
   "mainblockone": {
-    "description": "you are on MainBlockOne. you have the option to go east, west, south, or north"
+    "description": "you are on Main Block One. you have the option to go east, west, south, or north"
   },
   "secondblocktwo": {
-    "description": "you are on SecondBlockTwo. you have the option to go east, west, or north"
+    "description": "you are on Second Block Two. you have the option to go east, west, or north"
   },
   "secondblockone": {
-    "description": "you are on SecondBlockOne. you have the option to go east, west, or north"
+    "description": "you are on Second Block One. you have the option to go east, west, or north"
   },
   "firstblocktwo": {
-    "description": "you are on FirstBlockTwo. you have the option to go east or south"
+    "description": "you are on First Block Two. you have the option to go east or south"
   },
   "firstblockone": {
-    "description": "you are on FirstBlockOne. you have the option to go east, or west"
+    "description": "you are on First Block One. you have the option to go east, or west"
   },
   "westlakeblocktwo": {
-    "description": "you are on WestLakeBlockTwo. you have the option to go west or north"
+    "description": "you are on West Lake Block Two. you have the option to go west or north"
   },
   "westlakeblockone": {
     "description": "you are on WestLakeBlockOne. you have the option to go west, south, or north"
