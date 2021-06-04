@@ -1,4 +1,4 @@
-package com.infected.controller;
+package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.util.TextParser;
