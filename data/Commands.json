@@ -27,6 +27,22 @@
         "remove",
         "acquire"
       ]
+    },
+    "list": {
+      "nouns": [
+        "worldstats"
+      ],
+      "synonyms": [
+        "show",
+        "display"
+      ]
+    },
+    "quit": {
+      "synonyms": [
+        "exit",
+        "leave",
+        "close"
+      ]
     }
   }
 }

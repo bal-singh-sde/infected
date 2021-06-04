@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class World {
-    public void getWorldStats() {
+    public static void getWorldStats() {
         String rootPath = new File("").getAbsolutePath(); // project root folder
         File jsonSource = new File(rootPath + "/data/Worldstats.json");
 
