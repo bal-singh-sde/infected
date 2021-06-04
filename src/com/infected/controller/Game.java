@@ -1,9 +1,19 @@
 package com.infected.controller;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.TextNode;
+import com.infected.util.TextParser;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 
 public class Game {
     public void start() {
+        isSynonym( "back");
         Scanner scan = new Scanner(System.in);
 
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
@@ -21,5 +31,35 @@ public class Game {
         else if(input.equals("quarantine")){
              System.out.println("You are quarantined. Your contamination level is 0. You have the option to go west or quit");
          }
+
     }
+public boolean isSynonym(String input){
+
+    //synonym experiments
+    File jsonFile = new File("data/Commands.json");
+    try {
+        JsonNode node = TextParser.parse(jsonFile);
+
+        for(int i =0; i <(node.get("commands").get("go").get("synonyms").size());i++){
+            String tempGo = node.get("commands").get("go").get("synonyms").get(i).toString();
+            String subTempGo = tempGo.substring(1,tempGo.length()-1);
+            if(input.equals(subTempGo)){
+                System.out.println(input + " :is a synonym for go");
+                return true;
+            }
+        }
+        for(int i =0; i <(node.get("commands").get("get").get("synonyms").size());i++){
+            String tempGet = node.get("commands").get("get").get("synonyms").get(i).toString();
+            String subTempGet = tempGet.substring(1,tempGet.length()-1);
+            if(input.equals(subTempGet)){
+                System.out.println(input + " :is a synonym for get");
+                return true;
+            }
+        }
+    }catch (IOException e){
+        e.printStackTrace();
+    }
+    System.out.println(input + " :not found");
+    return false;
+}
 }
