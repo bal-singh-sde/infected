@@ -64,7 +64,7 @@ public String getProcessedVerb(String input){
         for(int i =0; i <(node.get("commands").get("go").get("synonyms").size());i++){
             String tempGo = node.get("commands").get("go").get("synonyms").get(i).toString();
             String subTempGo = tempGo.substring(1,tempGo.length()-1);
-            System.out.println("subTempGo: " + subTempGo);
+
             if(input.equals(subTempGo)){
                 System.out.println(input + " :is a synonym for go");
                 return "go";
