@@ -10,7 +10,7 @@ public class TextParser {
 
     private static ObjectMapper objectMapper = getDefaultObjectMapper(); //only need one object mapper
 
-    private static ObjectMapper getDefaultObjectMapper() {
+    public static ObjectMapper getDefaultObjectMapper() {
         ObjectMapper defaultObjectMapper = new ObjectMapper();
         return defaultObjectMapper;
     }
