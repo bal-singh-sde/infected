@@ -1,0 +1,32 @@
+{
+  "commands": {
+    "go": {
+      "nouns": [
+        "east",
+        "west",
+        "north",
+        "south"
+      ],
+      "synonyms": [
+        "walk",
+        "run",
+        "hike",
+        "skip"
+      ]
+    },
+    "get": {
+      "nouns": [
+        "quarantine",
+        "dirty mask",
+        "vaccine1",
+        "vaccine2",
+        "mask"
+      ],
+      "synonyms": [
+        "take",
+        "remove",
+        "acquire"
+      ]
+    }
+  }
+}
