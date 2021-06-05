@@ -38,27 +38,68 @@
     }
   },
   "mainBlockTwo": {
-    "description": "You are on Main Block Two. You have the option to go east, west, or north"
+    "description": "You are on Main Block Two. You have the option to go east, west, or north",
+    "nav": {
+      "north": "mainBlockOne",
+      "south": "mainXSecond",
+      "west": "park",
+      "east": "home"
+    }
   },
   "mainBlockOne": {
-    "description": "You are on Main Block One. You have the option to go east, west, south, or north"
+    "description": "You are on Main Block One. You have the option to go east, west, south, or north",
+    "nav": {
+      "north": "mainXFirst",
+      "south": "mainBlockTwo",
+      "west": "groceryStore",
+      "east": "lake"
+    }
   },
   "secondBlockTwo": {
-    "description": "You are on Second Block Two. You have the option to go east, west, or north"
+    "description": "You are on Second Block Two. You have the option to go east, west, or north",
+    "nav": {
+      "north": "park",
+      "west": "secondBlockOne",
+      "east": "mainXSecond"
+    }
   },
   "secondBlockOne": {
-    "description": "You are on Second Block One. You have the option to go east, west, or north"
-  },
-  "firstBlockTwo": {
-    "description": "You are on First Block Two. You have the option to go east or south"
+    "description": "You are on Second Block One. You have the option to go east, west, or north",
+    "nav": {
+      "north": "vaccineSite",
+      "west": "westLakeXSecond",
+      "east": "secondBlockTwo"
+    }
   },
   "firstBlockOne": {
-    "description": "You are on First Block One. You have the option to go east, or west"
+    "description": "You are on First Block Two. You have the option to go east or south",
+    "nav": {
+      "west": "firstXWestLake",
+      "east": "firstBlockTwo"
+    }
+  },
+  "firstBlockTwo": {
+    "description": "You are on First Block One. You have the option to go east, or west",
+    "nav": {
+      "south": "groceryStore",
+      "west": "firstBlockOne",
+      "east": "firstXMain"
+    }
   },
   "westLakeBlockTwo": {
-    "description": "You are on West Lake Block Two. You have the option to go west or north"
+    "description": "You are on West Lake Block Two. You have the option to go west or north",
+    "nav": {
+      "north": "westLakeBlockOne",
+      "south": "westLakeXSecond",
+      "east": "vaccineSite"
+    }
   },
   "westLakeBlockOne": {
-    "description": "You are on West Lake Block One. You have the option to go west, south, or north"
+    "description": "You are on West Lake Block One. You have the option to go west, south, or north",
+    "nav": {
+      "north": "firstXWestLake",
+      "south": "westLakeBlockTwo",
+      "west": "clinic"
+    }
   }
 }
