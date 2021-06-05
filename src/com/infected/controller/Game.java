@@ -10,9 +10,7 @@ import java.util.*;
 
 public class Game {
     public void start() {
-        isSynonym( "back");
         Scanner scan = new Scanner(System.in);
-
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
         // TODO: make location description dynamic based on current location
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
@@ -27,18 +25,18 @@ public class Game {
             String command = scan.nextLine();
             // "go west" -> ["go", "west"]
             String[] commandArray = command.toLowerCase().split(" ");
+            // if verb is a valid synonym, verb becomes original verb intended
+            commandArray[0] = getProcessedVerb(commandArray[0]);
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
             }
 
-            // TODO: vaccine logic that toggles secondShot
             if (secondShot) {
                 System.out.println("You won the game!");
                 System.exit(0);
             }
 
-            // TODO: figure out connecting synonym logic
             if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
             }
@@ -56,8 +54,8 @@ public class Game {
         }
 
     }
-public boolean isSynonym(String input){
 
+public String getProcessedVerb(String input){
     //synonym experiments
     File jsonFile = new File("data/Commands.json");
     try {
@@ -66,9 +64,10 @@ public boolean isSynonym(String input){
         for(int i =0; i <(node.get("commands").get("go").get("synonyms").size());i++){
             String tempGo = node.get("commands").get("go").get("synonyms").get(i).toString();
             String subTempGo = tempGo.substring(1,tempGo.length()-1);
+
             if(input.equals(subTempGo)){
                 System.out.println(input + " :is a synonym for go");
-                return true;
+                return "go";
             }
         }
         for(int i =0; i <(node.get("commands").get("get").get("synonyms").size());i++){
@@ -76,13 +75,13 @@ public boolean isSynonym(String input){
             String subTempGet = tempGet.substring(1,tempGet.length()-1);
             if(input.equals(subTempGet)){
                 System.out.println(input + " :is a synonym for get");
-                return true;
+                return "get";
             }
         }
     }catch (IOException e){
         e.printStackTrace();
     }
     System.out.println(input + " :not found");
-    return false;
+    return input;
 }
 }

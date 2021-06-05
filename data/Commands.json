@@ -11,7 +11,8 @@
         "walk",
         "run",
         "hike",
-        "skip"
+        "skip",
+        "go"
       ]
     },
     "get": {
@@ -25,7 +26,8 @@
       "synonyms": [
         "take",
         "remove",
-        "acquire"
+        "acquire",
+        "get"
       ]
     },
     "list": {
@@ -34,7 +36,8 @@
       ],
       "synonyms": [
         "show",
-        "display"
+        "display",
+        "list"
       ]
     },
     "quit": {
