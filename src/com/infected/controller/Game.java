@@ -64,12 +64,17 @@ public class Game {
             System.out.println(node.size());
             for (int i = 0; i < node.size(); i++){
                 String tempVerb = node.get(i).get("verb").toString();
+                String subTempVerb = tempVerb.substring(1,tempVerb.length()-1);
+                if(subTempVerb.equals(input)){
+                    System.out.println(input+" :equals :"+ subTempVerb);
+                    return subTempVerb;
+                }
                 for(int j = 0; j < node.get(i).get("synonyms").size(); j++){
                    String tempSyn = node.get(i).get("synonyms").get(j).toString();
-                    String subTempGo = tempSyn.substring(1, tempSyn.length() - 1);
-                    if(subTempGo.equals(input)){
-                        System.out.println(input + " :equals :"+ tempSyn+ " , and the correct command is "+tempVerb);
-                        return tempVerb;
+                    String subTempSyn = tempSyn.substring(1, tempSyn.length() - 1);
+                    if(subTempSyn.equals(input)){
+                        System.out.println(input + " :equals :"+ subTempSyn+ " , and the correct command is "+subTempVerb);
+                        return subTempVerb;
                     }
                 }
             }
