@@ -61,7 +61,7 @@ public class Game {
         File jsonFile = new File("data/Cmd.json");
         try {
             JsonNode node = TextParser.parse(jsonFile);
-            System.out.println(node.size());
+
             for (int i = 0; i < node.size(); i++){
                 String tempVerb = node.get(i).get("verb").toString();
                 String subTempVerb = tempVerb.substring(1,tempVerb.length()-1);
