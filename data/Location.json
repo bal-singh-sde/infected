@@ -74,7 +74,7 @@
   "firstBlockOne": {
     "description": "You are on First Block Two, You have the option to go to directions listed below",
     "nav": {
-      "west": "firstXWestLake",
+      "west": "westLakeXFirst",
       "east": "firstBlockTwo"
     }
   },
@@ -97,9 +97,37 @@
   "westLakeBlockOne": {
     "description": "You are on West Lake Block One, You have the option to go to directions listed below",
     "nav": {
-      "north": "firstXWestLake",
+      "north": "westLakeXFirst",
       "south": "westLakeBlockTwo",
       "west": "clinic"
+    }
+  },
+  "mainXFirst": {
+    "description": "You are at the intersection of mainBlockOne and firstBlockTwo. You have the option to go west or south",
+    "nav": {
+      "south": "mainBlockOne",
+      "west": "firstBlockTwo"
+    }
+  },
+  "mainXSecond": {
+    "description": "You are at intersection of mainBlockTwo and secondBlockTwo. You have the option to go west or north",
+    "nav": {
+      "north": "mainBlockTwo",
+      "west": "secondBlockTwo"
+    }
+  },
+  "westLakeXSecond": {
+    "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
+    "nav": {
+      "north": "westLakeBlockTwo",
+      "east": "secondBlockOne"
+    }
+  },
+  "westLakeXFirst": {
+    "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
+    "nav": {
+      "south": "westLakeBlockOne",
+      "east": "firstBlockOne"
     }
   }
 }
