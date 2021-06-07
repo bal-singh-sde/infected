@@ -18,12 +18,12 @@ public class Player {
             contaminationLevel = 0;
             System.out.println("CONTAMINATION LEVEL: "+ Player.getContaminationLevel());
             System.out.println("\n1: go west \n2: quit");
-        }else if(contaminationLevel ==0){
-            System.out.println("CONTAMINATION LEVEL IS ALREADY AT: 0");
+        }else if(!Player.getCurrentLocation().equals("home")){
+            System.out.println("MUST BE AT LOCATION HOME TO QUARANTINE");
             Navigation.routes();
 
         } else{
-            System.out.println("MUST BE AT LOCATION HOME TO QUARANTINE");
+            System.out.println("CONTAMINATION LEVEL IS ALREADY AT: 0");
             Navigation.routes();
         }
     }

@@ -1,6 +1,6 @@
 {
   "home": {
-    "description": "You are at home, you have the option to quarantine(lower contamination level to 0),or go to directions listed below",
+    "description": "You are at home, you have the option to quarantine(lower contamination level to 0) if noty already at 0,or go to directions listed below",
     "item": ["Sanitizer","Mask"],
     "nav": {
       "west": "mainBlockTwo"
