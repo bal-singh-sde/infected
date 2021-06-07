@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Navigation {
     private static final File jsonSource = new File("./data/Location.json");
-    ;
+
     private static JsonNode node;
 
     static {
