@@ -13,6 +13,7 @@ import java.util.*;
 
 public class Game {
     public void start() {
+        Player.setContaminationLevel(5);
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
         // TODO: make location description dynamic based on current location
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +

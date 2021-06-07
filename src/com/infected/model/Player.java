@@ -8,12 +8,12 @@ import java.io.IOException;
 
 public class Player {
     private static final File jsonSource = new File("./data/Player.json");
-    private static int contaminationLevel = 5;
+//    private static int contaminationLevel = 5;
 
     public static JsonNode getPlayerNode() {
         try {
             return TextParser.parse(jsonSource);
-        } catch(IOException ioException) {
+        } catch (IOException ioException) {
             ioException.printStackTrace();
         }
         return null;
@@ -35,19 +35,29 @@ public class Player {
     }
 
     public static int getContaminationLevel() {
-        return contaminationLevel;
+        return getPlayerNode().get("contaminationLevel").asInt();
     }
 
-    public static void quarantine(){
-        if(Player.getCurrentLocation().equals("home") && contaminationLevel !=0){
-            contaminationLevel = 0;
-            System.out.println("CONTAMINATION LEVEL: "+ Player.getContaminationLevel());
+    public static void setContaminationLevel(int level) {
+        JsonNode currContam = getPlayerNode();
+        JsonNode newContam = TextParser.getNewNode(currContam, "contaminationLevel", level);
+        try {
+            TextParser.write(jsonSource, newContam);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public static void quarantine() {
+        if (Player.getCurrentLocation().equals("home") && Player.getContaminationLevel() != 0) {
+            setContaminationLevel(0);
+            System.out.println("CONTAMINATION LEVEL: " + Player.getContaminationLevel());
             System.out.println("\n1: go west \n2: quit");
-        }else if(!Player.getCurrentLocation().equals("home")){
+        } else if (!Player.getCurrentLocation().equals("home")) {
             System.out.println("MUST BE AT LOCATION HOME TO QUARANTINE");
             Navigation.routes();
 
-        } else{
+        } else {
             System.out.println("CONTAMINATION LEVEL IS ALREADY AT: 0");
             Navigation.routes();
         }
