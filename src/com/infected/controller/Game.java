@@ -2,6 +2,7 @@ package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.Navigation;
+import com.infected.model.Player;
 import com.infected.model.World;
 import com.infected.util.TextParser;
 
@@ -43,7 +44,8 @@ public class Game {
 
             if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
-                System.out.println("You Current location :" + Navigation.go(commandArray[1]));
+                Navigation.go(commandArray[1]);
+                System.out.println("Current location: " + Player.getCurrentLocation());
                 Navigation.routes();
             }
 
