@@ -30,6 +30,13 @@
       "leave",
       "close"
     ]
+  },
+  {
+    "verb": "quarantine",
+    "synonyms": [
+      "rest",
+      "stay"
+    ]
   }
 ]
 
