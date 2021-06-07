@@ -18,7 +18,7 @@ public class Game {
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
                 "\nYou are at home you have the option to quarantine(lower contamination level to 0)or go west. \nSelect the following command:");
         // TODO: need to make valid commands dynamic based on current location
-        System.out.println("\n1: goWest \n2: quarantine \n3: q to Quit ");
+        System.out.println("\n1: go west \n2: quit");
 
         while (true) {
             Scanner scan = new Scanner(System.in);
