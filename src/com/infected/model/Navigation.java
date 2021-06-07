@@ -30,7 +30,9 @@ public class Navigation {
     }
         public static void routes () {
             String route;
+            String description = node.get(Player.getCurrentLocation()).get("description").toString().replaceAll(",","\n").replaceAll("\"","");
             route = node.get(Player.getCurrentLocation()).get("nav").toString().replaceAll("[{}]","").replaceAll(",","\n");
+            System.out.println("Description: \n"+ description);
             System.out.println("Directions you can go: \n" + route);
         }
     }
