@@ -3,6 +3,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.util.TextParser;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 public class Location {
     private static final File jsonSource = new File("./data/Location.json");
@@ -25,6 +26,8 @@ public class Location {
     }
 
     public static String getCapacityLimit(String location) {
-        return getCurrentCapacity(location) + " / " + getMaxCapacity(location);
+        double capacity = (double) getCurrentCapacity(location) / (double) getMaxCapacity(location);
+        DecimalFormat df = new DecimalFormat("#%");
+        return df.format(capacity);
     }
 }
