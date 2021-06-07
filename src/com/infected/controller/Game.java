@@ -13,7 +13,6 @@ import java.util.*;
 
 public class Game {
     public void start() {
-
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
         // TODO: make location description dynamic based on current location
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
@@ -22,10 +21,18 @@ public class Game {
         System.out.println("\n1: go west \n2: quit \n3: quarantine");
 
         while (true) {
+            boolean secondShot = false;
+            if(Player.getCurrentLocation().equals("clinic")){
+                System.out.println("Got here");
+                secondShot = true;
+            }
+            if (secondShot) {
+                System.out.println("You won the game!");
+                System.exit(0);
+            }
             Scanner scan = new Scanner(System.in);
             System.out.print("Enter your command here: ");
 
-            boolean secondShot = false;
             // "go west"
             String command = scan.nextLine();
             // "go west" -> ["go", "west"]
