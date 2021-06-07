@@ -1,18 +1,43 @@
 package com.infected.model;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.TextParser;
+
+import java.io.File;
+import java.io.IOException;
+
 public class Player {
-    private static String currentLocation = "home";
-	private static int contaminationLevel =5;
+    private static final File jsonSource = new File("./data/Player.json");
+    private static int contaminationLevel = 5;
+
+    public static JsonNode getPlayerNode() {
+        try {
+            return TextParser.parse(jsonSource);
+        } catch(IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return null;
+    }
 
     public static String getCurrentLocation() {
-        return currentLocation;
+        return getPlayerNode().get("currentLocation").textValue();
     }
-    public static int getContaminationLevel(){
+
+    public static void setCurrentLocation(String newLocation) {
+        JsonNode currPlayerNode = getPlayerNode();
+        JsonNode newNode = TextParser.getNewNode(currPlayerNode, "currentLocation", newLocation);
+
+        try {
+            TextParser.write(jsonSource, newNode);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
+
+    public static int getContaminationLevel() {
         return contaminationLevel;
     }
-    public static void setCurrentLocation(String currentLocation) {
-        Player.currentLocation = currentLocation;
-    }
+
     public static void quarantine(){
         if(Player.getCurrentLocation().equals("home") && contaminationLevel !=0){
             contaminationLevel = 0;
@@ -27,5 +52,4 @@ public class Player {
             Navigation.routes();
         }
     }
-
 }

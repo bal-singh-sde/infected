@@ -63,7 +63,7 @@ public class Game {
             if ("list".equals(commandArray[0])) {
                 // TODO: check if list item exists. if list item exists, list the item, else display error
                 if ("worldstats".equals(commandArray[1])) {
-                    World.getWorldStats();
+                    World.printWorldStats();
                 }
             }
             if("quarantine".equals(commandArray[0])){
