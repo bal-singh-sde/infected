@@ -2,6 +2,7 @@ package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.Navigation;
+import com.infected.model.Player;
 import com.infected.model.World;
 import com.infected.util.TextParser;
 
@@ -18,7 +19,7 @@ public class Game {
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
                 "\nYou are at home you have the option to quarantine(lower contamination level to 0)or go west. \nSelect the following command:");
         // TODO: need to make valid commands dynamic based on current location
-        System.out.println("\n1: go west \n2: quit");
+        System.out.println("\n1: go west \n2: quit \n3: quarantine");
 
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -43,7 +44,8 @@ public class Game {
 
             if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
-                System.out.println("You Current location :" + Navigation.go(commandArray[1]));
+                Navigation.go(commandArray[1]);
+                System.out.println("Current location: " + Player.getCurrentLocation());
                 Navigation.routes();
             }
 
@@ -56,6 +58,10 @@ public class Game {
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 }
+            }
+            if("quarantine".equals(commandArray[0])){
+                // TODO: run player quarintine method
+                Player.quarantine();
             }
         }
 

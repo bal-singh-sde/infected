@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class Navigation {
     private static final File jsonSource = new File("./data/Location.json");
-    ;
+
     private static JsonNode node;
 
     static {
@@ -20,13 +20,12 @@ public class Navigation {
         }
     }
 
-    public static String go(String destination) {
+    public static void go(String destination) {
         String cLo = null;
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
             Player.setCurrentLocation(cLo);
         }
-        return Player.getCurrentLocation();
     }
         public static void routes () {
             String route;

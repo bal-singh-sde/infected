@@ -1,6 +1,6 @@
 {
   "home": {
-    "description": "You are at home, you have the option to quarantine(lower contamination level to 0),or go to directions listed below",
+    "description": "You are at home, you have the option to quarantine(lower contamination level to 0) if noty already at 0,or go to directions listed below",
     "item": ["Sanitizer","Mask"],
     "nav": {
       "west": "mainBlockTwo"
@@ -94,7 +94,7 @@
   "firstBlockOne": {
     "description": "You are on First Block Two, You have the option to go to directions listed below",
     "nav": {
-      "west": "firstXWestLake",
+      "west": "westLakeXFirst",
       "east": "firstBlockTwo"
     },
     "currentCapacity" : 0,
@@ -123,9 +123,45 @@
   "westLakeBlockOne": {
     "description": "You are on West Lake Block One, You have the option to go to directions listed below",
     "nav": {
-      "north": "firstXWestLake",
+      "north": "westLakeXFirst",
       "south": "westLakeBlockTwo",
       "west": "clinic"
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
+  },
+  "mainXFirst": {
+    "description": "You are at the intersection of mainBlockOne and firstBlockTwo. You have the option to go west or south",
+    "nav": {
+      "south": "mainBlockOne",
+      "west": "firstBlockTwo"
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
+  },
+  "mainXSecond": {
+    "description": "You are at intersection of mainBlockTwo and secondBlockTwo. You have the option to go west or north",
+    "nav": {
+      "north": "mainBlockTwo",
+      "west": "secondBlockTwo"
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
+  },
+  "westLakeXSecond": {
+    "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
+    "nav": {
+      "north": "westLakeBlockTwo",
+      "east": "secondBlockOne"
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
+  },
+  "westLakeXFirst": {
+    "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
+    "nav": {
+      "south": "westLakeBlockOne",
+      "east": "firstBlockOne"
     },
     "currentCapacity" : 0,
     "maxCapacity" : 20
