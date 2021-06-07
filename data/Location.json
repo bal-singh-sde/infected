@@ -56,7 +56,9 @@
       "south": "mainXSecond",
       "west": "park",
       "east": "home"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "mainBlockOne": {
     "description": "You are on Main Block One, You have the option to go to directions listed below",
@@ -65,7 +67,9 @@
       "south": "mainBlockTwo",
       "west": "groceryStore",
       "east": "lake"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "secondBlockTwo": {
     "description": "You are on Second Block Two, You have the option to go to directions listed below",
@@ -73,7 +77,9 @@
       "north": "park",
       "west": "secondBlockOne",
       "east": "mainXSecond"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "secondBlockOne": {
     "description": "You are on Second Block One, You have the option to go to directions listed below",
@@ -81,14 +87,18 @@
       "north": "vaccineSite",
       "west": "westLakeXSecond",
       "east": "secondBlockTwo"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "firstBlockOne": {
     "description": "You are on First Block Two, You have the option to go to directions listed below",
     "nav": {
       "west": "firstXWestLake",
       "east": "firstBlockTwo"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "firstBlockTwo": {
     "description": "You are on First Block One, You have the option to go to directions listed below",
@@ -96,7 +106,9 @@
       "south": "groceryStore",
       "west": "firstBlockOne",
       "east": "firstXMain"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "westLakeBlockTwo": {
     "description": "You are on West Lake Block Two, You have the option to go to directions listed below",
@@ -104,7 +116,9 @@
       "north": "westLakeBlockOne",
       "south": "westLakeXSecond",
       "east": "vaccineSite"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   },
   "westLakeBlockOne": {
     "description": "You are on West Lake Block One, You have the option to go to directions listed below",
@@ -112,6 +126,8 @@
       "north": "firstXWestLake",
       "south": "westLakeBlockTwo",
       "west": "clinic"
-    }
+    },
+    "currentCapacity" : 0,
+    "maxCapacity" : 20
   }
 }
