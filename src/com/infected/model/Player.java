@@ -51,7 +51,7 @@ public class Player {
         if (Player.getCurrentLocation().equals("home") && Player.getContaminationLevel() != 0) {
             setContaminationLevel(0);
             System.out.println("CONTAMINATION LEVEL: " + Player.getContaminationLevel());
-            System.out.println("\n1: go west \n2: quit");
+            System.out.println("\n- go west \n- quit");
         } else if (!Player.getCurrentLocation().equals("home")) {
             System.out.println("MUST BE AT LOCATION HOME TO QUARANTINE");
             Navigation.routes();

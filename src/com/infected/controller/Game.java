@@ -18,9 +18,9 @@ public class Game {
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
         // TODO: make location description dynamic based on current location
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
-                "\nYou are at home you have the option to quarantine(lower contamination level to 0)or go west. \nSelect the following command:");
+                "\nYou are at home you have the option to quit, quarantine(lower contamination level to 0)or go west. \nSelect the following command:");
         // TODO: need to make valid commands dynamic based on current location
-        System.out.println("\n1: go west \n2: quit \n3: quarantine");
+        System.out.println("\n- go west \n- quit \n- quarantine");
 
         while (true) {
             boolean secondShot = false;
