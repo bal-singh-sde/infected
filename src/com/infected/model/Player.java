@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class Player {
     private static final File jsonSource = new File("./data/Player.json");
-//    private static int contaminationLevel = 5;
 
     public static JsonNode getPlayerNode() {
         try {
