@@ -1,0 +1,43 @@
+[
+  {
+    "verb": "go",
+    "synonyms": [
+      "walk",
+      "run",
+      "hike",
+      "skip"
+    ]
+  },
+  {
+    "verb": "get",
+    "synonyms": [
+      "take",
+      "remove",
+      "acquire"
+    ]
+  },
+  {
+    "verb": "list",
+    "synonyms": [
+      "show",
+      "display"
+    ]
+  },
+  {
+    "verb": "quit",
+    "synonyms": [
+      "exit",
+      "leave",
+      "close"
+    ]
+  },
+  {
+    "verb": "quarantine",
+    "synonyms": [
+      "rest",
+      "stay"
+    ]
+  }
+]
+
+
