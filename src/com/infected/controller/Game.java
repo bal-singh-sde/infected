@@ -46,11 +46,6 @@ public class Game {
                 System.exit(0);
             }
 
-            if (secondShot) {
-                System.out.println("You won the game!");
-                System.exit(0);
-            }
-
             if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
                 Navigation.go(commandArray[1]);
@@ -71,6 +66,17 @@ public class Game {
             if("quarantine".equals(commandArray[0])){
                 // TODO: run player quarintine method
                 Player.quarantine();
+            }
+            //integrate raise and lower the location where these happen may change in future
+            if("park".equals(Player.getCurrentLocation())){
+                System.out.println("LOTS OF PEOPLE NO MASK, \nYOUR CONTAMINATION LEVEL HAS BEEN RAISED");
+                Player.raiseContaminationLevel();
+                System.out.println("NEW Contamination Level: "+Player.getContaminationLevel());
+            }
+            if("vaccineSite".equals(Player.getCurrentLocation())){
+                System.out.println("RECEIVED PROFESSIONAL CARE FROM CDC STAFF, \nYOUR CONTAMINATION LEVEL HAS BEEN LOWERED");
+                Player.lowerContaminationLevel();
+                System.out.println("NEW Contamination Level: "+Player.getContaminationLevel());
             }
         }
 
