@@ -23,8 +23,7 @@ public class Player {
     }
 
     public static void setCurrentLocation(String newLocation) {
-//        JsonNode currPlayerNode = getPlayerNode();
-        JsonNode newNode = overWriteLocationSetup(newLocation);//TextParser.getNewNode(currPlayerNode, "currentLocation", newLocation);
+        JsonNode newNode = overWriteLocationSetup(newLocation);
 
         try {
             TextParser.write(jsonSource, newNode);
@@ -38,7 +37,7 @@ public class Player {
     }
 
     public static void setContaminationLevel(int level) {
-        JsonNode newContam = overWriteContaminationSetup(level); //TextParser.getNewNode(currContam, "contaminationLevel", level);
+        JsonNode newContam = overWriteContaminationSetup(level);
         try {
             TextParser.write(jsonSource, newContam);
         } catch (IOException ioException) {
@@ -98,8 +97,5 @@ public class Player {
             Navigation.routes();
         }
     }
-    //working on function now
-    public static void locationHasItem(){
-        File jsonSource = new File("./data/Player.json");
-    }
+
 }

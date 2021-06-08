@@ -13,7 +13,7 @@ import java.util.*;
 
 public class Game {
     public void start() {
-        Player.locationHasItem();
+
         Player.setContaminationLevel(5);
         Player.setCurrentLocation("home");
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
@@ -77,8 +77,6 @@ public class Game {
     public String getProcessedVerb(String input) {
         //synonym experiments
         File jsonFile = new File("data/Cmd.json");
-        int temp = Player.getContaminationLevel();
-        System.out.println("temp level " + temp);
         try {
             JsonNode node = TextParser.parse(jsonFile);
 
@@ -100,9 +98,7 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Player.setContaminationLevel(temp-4);
         System.out.println("you entered " + input + " :invalid input please enter a correct command");
-        System.out.println("after: "+ Player.getContaminationLevel());
         return input;
     }
 }
