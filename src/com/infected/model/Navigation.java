@@ -22,15 +22,18 @@ public class Navigation {
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
             Player.setCurrentLocation(cLo);
+            Player.raiseContaminationLevel(1);
         }
     }
 
     public static void routes () {
         String route;
+        String infectedLevel = "CURRENT CONTAMINATION LEVEL: "+Player.getContaminationLevel();
         String description = node.get(Player.getCurrentLocation()).get("description").toString().replaceAll(",","\n").replaceAll("\"","");
         route = node.get(Player.getCurrentLocation()).get("nav").toString().replaceAll("[{}]","").replaceAll(",","\n");
-        System.out.println("Description: \n"+ description);
-        System.out.println("Directions you can go: \n" + route);
+        System.out.println(infectedLevel);
+        System.out.println("DESCRIPTION: \n"+ description);
+        System.out.println("DIRECTIONS YOU CAN GO: \n" + route);
     }
 }
 

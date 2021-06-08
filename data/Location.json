@@ -10,8 +10,9 @@
   },
   "park": {
     "description": "You are at the Park, You see people with no mask and a dirty mask on the ground, You have the option to get dirtymask, and or go to directions listed below",
+    "item": ["Sanitizer","Mask"],
     "nav": {
-      "west": "mainBlockTwo",
+      "east": "mainBlockTwo",
       "south": "secondBlockTwo"
     },
     "currentCapacity" : 10,

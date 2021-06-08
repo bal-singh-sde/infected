@@ -13,6 +13,7 @@ import java.util.*;
 
 public class Game {
     public void start() {
+
         Player.setContaminationLevel(5);
         Player.setCurrentLocation("home");
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
@@ -46,32 +47,29 @@ public class Game {
                 System.exit(0);
             }
 
-            if (secondShot) {
-                System.out.println("You won the game!");
-                System.exit(0);
-            }
-
-            if ("go".equals(commandArray[0])) {
+            else if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
                 Navigation.go(commandArray[1]);
                 System.out.println("Current location: " + Player.getCurrentLocation());
                 Navigation.routes();
             }
 
-            if ("get".equals(commandArray[0])) {
+           else if ("get".equals(commandArray[0])) {
                 // TODO: check if item is in room. if item is valid, pick up item, else display error
+
             }
 
-            if ("list".equals(commandArray[0])) {
+            else if ("list".equals(commandArray[0])) {
                 // TODO: check if list item exists. if list item exists, list the item, else display error
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 }
             }
-            if("quarantine".equals(commandArray[0])){
+            else if("quarantine".equals(commandArray[0])){
                 // TODO: run player quarintine method
                 Player.quarantine();
             }
+
         }
 
     }

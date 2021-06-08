@@ -23,8 +23,7 @@ public class Player {
     }
 
     public static void setCurrentLocation(String newLocation) {
-        JsonNode currPlayerNode = getPlayerNode();
-        JsonNode newNode = TextParser.getNewNode(currPlayerNode, "currentLocation", newLocation);
+        JsonNode newNode = overWriteLocationSetup(newLocation);
 
         try {
             TextParser.write(jsonSource, newNode);
@@ -38,15 +37,52 @@ public class Player {
     }
 
     public static void setContaminationLevel(int level) {
-        JsonNode currContam = getPlayerNode();
-        JsonNode newContam = TextParser.getNewNode(currContam, "contaminationLevel", level);
+        JsonNode newContam = overWriteContaminationSetup(level);
         try {
             TextParser.write(jsonSource, newContam);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
     }
+    public static JsonNode overWriteLocationSetup(String value){
+        //overwrite josn file with new string value
+        JsonNode currContam = getPlayerNode();
+        JsonNode newContam = TextParser.getNewNode(currContam, "currentLocation", value);
 
+        return newContam;
+    }
+    public static JsonNode overWriteContaminationSetup(int value){
+        //overwrite josn file with new int value
+        JsonNode currContam = getPlayerNode();
+        JsonNode newContam = TextParser.getNewNode(currContam, "contaminationLevel", value);
+
+        return newContam;
+    }
+    public static void raiseContaminationLevel(int value){
+        // raises contamination level
+        int currentLevel = getContaminationLevel();
+        currentLevel += value;
+        try {
+            TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+    public static void lowerContaminationLevel(){
+        // lower contamination level
+        int currentLevel = getContaminationLevel();
+        //can not have negative contamination level
+        if(currentLevel <= 4){
+            currentLevel = 0;
+        }else {
+            currentLevel -= 4;
+        }
+        try {
+            TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
     public static void quarantine() {
         if (Player.getCurrentLocation().equals("home") && Player.getContaminationLevel() != 0) {
             setContaminationLevel(0);
@@ -61,4 +97,5 @@ public class Player {
             Navigation.routes();
         }
     }
+
 }
