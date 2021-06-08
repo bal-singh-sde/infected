@@ -27,6 +27,10 @@ public class TextParser {
         ((ObjectNode) jsonNode).put(key, newValue);
         return jsonNode;
     }
+    public static JsonNode getNewNode(JsonNode jsonNode, String key, int newValue) {
+        ((ObjectNode) jsonNode).put(key, newValue);
+        return jsonNode;
+    }
 
     public static void write(File src, JsonNode jsonNode) throws IOException {
         // use DefaultPrettyPrinter to auto-format json after writing

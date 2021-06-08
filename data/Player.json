@@ -1,3 +1,4 @@
 {
-  "currentLocation" : "home"
+  "currentLocation" : "home",
+  "contaminationLevel" : 5
 }
