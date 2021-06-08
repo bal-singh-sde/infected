@@ -13,6 +13,7 @@ import java.util.*;
 
 public class Game {
     public void start() {
+        Player.locationHasItem();
         Player.setContaminationLevel(5);
         Player.setCurrentLocation("home");
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
@@ -46,38 +47,29 @@ public class Game {
                 System.exit(0);
             }
 
-            if ("go".equals(commandArray[0])) {
+            else if ("go".equals(commandArray[0])) {
                 // TODO: check if move is valid. if move is valid, move player to new location else display error
                 Navigation.go(commandArray[1]);
                 System.out.println("Current location: " + Player.getCurrentLocation());
                 Navigation.routes();
             }
 
-            if ("get".equals(commandArray[0])) {
+           else if ("get".equals(commandArray[0])) {
                 // TODO: check if item is in room. if item is valid, pick up item, else display error
+
             }
 
-            if ("list".equals(commandArray[0])) {
+            else if ("list".equals(commandArray[0])) {
                 // TODO: check if list item exists. if list item exists, list the item, else display error
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 }
             }
-            if("quarantine".equals(commandArray[0])){
+            else if("quarantine".equals(commandArray[0])){
                 // TODO: run player quarintine method
                 Player.quarantine();
             }
-            //integrate raise and lower the location where these happen may change in future
-            if("park".equals(Player.getCurrentLocation())){
-                System.out.println("LOTS OF PEOPLE NO MASK, \nYOUR CONTAMINATION LEVEL HAS BEEN RAISED");
-                Player.raiseContaminationLevel();
-                System.out.println("NEW Contamination Level: "+Player.getContaminationLevel());
-            }
-            if("vaccineSite".equals(Player.getCurrentLocation())){
-                System.out.println("RECEIVED PROFESSIONAL CARE FROM CDC STAFF, \nYOUR CONTAMINATION LEVEL HAS BEEN LOWERED");
-                Player.lowerContaminationLevel();
-                System.out.println("NEW Contamination Level: "+Player.getContaminationLevel());
-            }
+
         }
 
     }
@@ -85,6 +77,8 @@ public class Game {
     public String getProcessedVerb(String input) {
         //synonym experiments
         File jsonFile = new File("data/Cmd.json");
+        int temp = Player.getContaminationLevel();
+        System.out.println("temp level " + temp);
         try {
             JsonNode node = TextParser.parse(jsonFile);
 
@@ -106,7 +100,9 @@ public class Game {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Player.setContaminationLevel(temp-4);
         System.out.println("you entered " + input + " :invalid input please enter a correct command");
+        System.out.println("after: "+ Player.getContaminationLevel());
         return input;
     }
 }

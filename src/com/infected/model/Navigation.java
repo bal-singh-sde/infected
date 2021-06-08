@@ -22,6 +22,7 @@ public class Navigation {
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
             Player.setCurrentLocation(cLo);
+            Player.raiseContaminationLevel(1);
         }
     }
 

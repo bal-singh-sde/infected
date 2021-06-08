@@ -59,10 +59,10 @@ public class Player {
 
         return newContam;
     }
-    public static void raiseContaminationLevel(){
+    public static void raiseContaminationLevel(int value){
         // raises contamination level
         int currentLevel = getContaminationLevel();
-        currentLevel += 3;
+        currentLevel += value;
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
         }catch (IOException e){
@@ -97,5 +97,9 @@ public class Player {
             System.out.println("CONTAMINATION LEVEL IS ALREADY AT: 0");
             Navigation.routes();
         }
+    }
+    //working on function now
+    public static void locationHasItem(){
+        File jsonSource = new File("./data/Player.json");
     }
 }
