@@ -1,15 +1,15 @@
 {
   "home" : {
     "mask" : 0,
-    "sanitizer" : 0
+    "sanitizer" : 1
   },
   "park" : {
     "mask" : 1,
     "sanitizer" : 1
   },
   "groceryStore" : {
-    "mask" : 1,
-    "sanitizer" : 1
+    "mask" : 0,
+    "sanitizer" : 0
   },
   "clinic" : {
     "mask" : 1,
