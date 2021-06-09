@@ -155,7 +155,6 @@ public class Player {
     public static void addItem(String item) {
         JsonNode origNode = getPlayerBackPack();
         LinkedHashMap<String, Integer> map = TextParser.jsonNodeToHashMapInt(origNode);
-        System.out.println(Objects.requireNonNull(Location.getLocationItemsNode()).get(Player.getCurrentLocation()));
         if (map.containsKey(item) && Objects.requireNonNull(Location.getLocationItemsNode()).get(Player.getCurrentLocation()).get(item).asInt() >= 1) {
             if (map.get(item) < 5) {
                 map.put(item, map.get(item) + 1);
