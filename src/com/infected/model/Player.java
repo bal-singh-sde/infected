@@ -8,10 +8,20 @@ import java.io.IOException;
 
 public class Player {
     private static final File jsonSource = new File("./data/Player.json");
+    private static final File jsonSourceDefault = new File("./data/default/Player.json");
 
     public static JsonNode getPlayerNode() {
         try {
             return TextParser.parse(jsonSource);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return null;
+    }
+
+    public static JsonNode getPlayerNodeDefault() {
+        try {
+            return TextParser.parse(jsonSourceDefault);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -27,6 +37,7 @@ public class Player {
 
         try {
             TextParser.write(jsonSource, newNode);
+            Game.saveGame();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -40,6 +51,7 @@ public class Player {
         JsonNode newContam = overWriteContaminationSetup(level);
         try {
             TextParser.write(jsonSource, newContam);
+            Game.saveGame();
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -98,4 +110,13 @@ public class Player {
         }
     }
 
+    public static void resetPlayer() {
+        JsonNode newPlayerNode = getPlayerNodeDefault();
+
+        try {
+            TextParser.write(jsonSource, newPlayerNode);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }
