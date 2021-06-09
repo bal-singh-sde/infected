@@ -1,0 +1,22 @@
+{
+  "home" : {
+    "mask" : 0,
+    "sanitizer" : 0
+  },
+  "park" : {
+    "mask" : 1,
+    "sanitizer" : 1
+  },
+  "groceryStore" : {
+    "mask" : 1,
+    "sanitizer" : 1
+  },
+  "clinic" : {
+    "mask" : 1,
+    "sanitizer" : 1
+  },
+  "vaccineSite" : {
+    "mask" : 1,
+    "sanitizer" : 1
+  }
+}

@@ -48,4 +48,12 @@ public class TextParser {
     public static LinkedHashMap<String, Object> jsonNodeToHashMap(JsonNode jsonNode) {
         return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, Object>>(){});
     }
+
+    public static LinkedHashMap<String, Integer> jsonNodeToHashMapInt(JsonNode jsonNode) {
+        return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, Integer>>(){});
+    }
+
+    public static LinkedHashMap<String, LinkedHashMap<String, Integer>> jsonNodeToHashMapNested(JsonNode jsonNode) {
+        return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, LinkedHashMap<String, Integer>>>() {});
+    }
 }
