@@ -48,6 +48,8 @@ public class Player {
     }
 
     public static void setContaminationLevel(int level) {
+        if(level<0)return;
+
         JsonNode newContam = overWriteContaminationSetup(level);
         try {
             TextParser.write(jsonSource, newContam);
@@ -72,6 +74,8 @@ public class Player {
     }
     public static void raiseContaminationLevel(int value){
         // raises contamination level
+        if(value<0) return;
+
         int currentLevel = getContaminationLevel();
         currentLevel += value;
         try {
@@ -84,10 +88,10 @@ public class Player {
         // lower contamination level
         int currentLevel = getContaminationLevel();
         //can not have negative contamination level
-        if(currentLevel <= 4){
+        if(currentLevel <= 3){
             currentLevel = 0;
         }else {
-            currentLevel -= 4;
+            currentLevel -= 3;
         }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
