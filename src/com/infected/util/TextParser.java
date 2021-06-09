@@ -27,7 +27,13 @@ public class TextParser {
         ((ObjectNode) jsonNode).put(key, newValue);
         return jsonNode;
     }
+
     public static JsonNode getNewNode(JsonNode jsonNode, String key, int newValue) {
+        ((ObjectNode) jsonNode).put(key, newValue);
+        return jsonNode;
+    }
+
+    public static JsonNode getNewNode(JsonNode jsonNode, String key, boolean newValue) {
         ((ObjectNode) jsonNode).put(key, newValue);
         return jsonNode;
     }
