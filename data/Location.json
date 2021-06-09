@@ -1,7 +1,7 @@
 {
   "home": {
     "description": "You are at home, you have the option to quarantine(lower contamination level to 0) if noty already at 0,or go to directions listed below",
-    "item": ["Sanitizer","Mask"],
+    "item": ["sanitizer","mask"],
     "nav": {
       "west": "mainBlockTwo"
     },
@@ -10,7 +10,7 @@
   },
   "park": {
     "description": "You are at the Park, You see people with no mask and a dirty mask on the ground, You have the option to get dirtymask, and or go to directions listed below",
-    "item": ["Sanitizer","Mask"],
+    "item": ["sanitizer","mask"],
     "nav": {
       "east": "mainBlockTwo",
       "south": "secondBlockTwo"

@@ -72,10 +72,10 @@ public class Player {
         // lower contamination level
         int currentLevel = getContaminationLevel();
         //can not have negative contamination level
-        if(currentLevel <= 4){
+        if(currentLevel <= 3){
             currentLevel = 0;
         }else {
-            currentLevel -= 4;
+            currentLevel -= 3;
         }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
