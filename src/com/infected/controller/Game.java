@@ -96,19 +96,8 @@ public class Game {
         File jsonFile = new File("data/Cmd.json");
         try {
             JsonNode node = TextParser.parse(jsonFile);
-            for (int i = 0; i < node.size(); i++) {
-                String tempVerb = node.get(i).get("verb").toString();
-                String subTempVerb = tempVerb.substring(1, tempVerb.length() - 1);
-                if (subTempVerb.equals(input)) {
-                    return subTempVerb;
-                }
-                for (int j = 0; j < node.get(i).get("synonyms").size(); j++) {
-                    String tempSyn = node.get(i).get("synonyms").get(j).toString();
-                    String subTempSyn = tempSyn.substring(1, tempSyn.length() - 1);
-                    if (subTempSyn.equals(input)) {
-                        return subTempVerb;
-                    }
-                }
+            if(node.has(input)){
+                return node.get(input).textValue();
             }
 
         } catch (IOException e) {
