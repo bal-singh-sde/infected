@@ -1,7 +1,6 @@
 package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.infected.model.Interactions;
 import com.infected.model.Navigation;
 import com.infected.model.Player;
 import com.infected.model.World;
@@ -57,7 +56,7 @@ public class Game {
 
            else if ("get".equals(commandArray[0])) {
                 // TODO: check if item is in room. if item is valid, pick up item, else display error
-                Interactions.get(commandArray[1]);
+
             }
 
             else if ("list".equals(commandArray[0])) {
