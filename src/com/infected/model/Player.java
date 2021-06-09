@@ -5,10 +5,12 @@ import com.infected.util.TextParser;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.LinkedHashMap;
 
 public class Player {
     private static final File jsonSource = new File("./data/Player.json");
     private static final File jsonSourceDefault = new File("./data/default/Player.json");
+    private static final File backPackSource = new File("./data/Backpack.json");
 
     public static JsonNode getPlayerNode() {
         try {
@@ -22,6 +24,15 @@ public class Player {
     public static JsonNode getPlayerNodeDefault() {
         try {
             return TextParser.parse(jsonSourceDefault);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return null;
+    }
+
+    public static JsonNode getPlayerBackPack() {
+        try {
+            return TextParser.parse(backPackSource);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -121,6 +132,29 @@ public class Player {
             TextParser.write(jsonSource, newPlayerNode);
         } catch (IOException ioException) {
             ioException.printStackTrace();
+        }
+    }
+
+    public static void addItem(String item) {
+        JsonNode origNode = getPlayerBackPack();
+        LinkedHashMap<String, Integer> map = TextParser.jsonNodeToHashMapInt(origNode);
+        if (map.containsKey(item) && Location.getLocationItemsNode().get(Player.getCurrentLocation()).get(item).asInt() >= 1) {
+            if (map.get(item) < 5) {
+                map.put(item, map.get(item) + 1);
+                JsonNode finalNode = TextParser.getDefaultObjectMapper().convertValue(map, JsonNode.class);
+                try {
+                    TextParser.write(backPackSource, finalNode);
+                    Location.removeItem(item);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                System.out.println("Your mask pocket is full");
+            }
+        }
+        else {
+            System.out.println("No items at Location");
         }
     }
 }
