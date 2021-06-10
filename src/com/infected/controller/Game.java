@@ -72,23 +72,19 @@ public class Game {
 
     private void promptGameStatus() {
         System.out.println("Current game is in progress. Would you like to resume previous game or start a new game?");
-        System.out.println("\n- resume game \n- reset game");
+        System.out.println("\n- resume \n- reset");
 
         while (true) {
             String[] commandArray = TextScanner.newScanner();
             commandArray[0] = getProcessedVerb(commandArray[0]);
 
-            if (commandArray.length == 2 && "resume".equals(commandArray[0])) {
-                if ("game".equals(commandArray[1])) {
+            if (commandArray.length == 1 && "resume".equals(commandArray[0])) {
                     printCurrentLocation();
                     break;
-                }
-            } else if (commandArray.length == 2 && "reset".equals(commandArray[0])) {
-                if ("game".equals(commandArray[1])) {
+            } else if (commandArray.length == 1 && "reset".equals(commandArray[0])) {
                     clearGameData();
                     printIntro();
                     break;
-                }
             } else {
                 System.out.println("Invalid command. Valid commands: <reset game> or <resume game>");
             }
