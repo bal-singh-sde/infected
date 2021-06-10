@@ -24,6 +24,26 @@ public class Navigation {
             cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
             Player.setCurrentLocation(cLo);
             Player.raiseContaminationLevel(1);
+           nurseInitialize();
+        }
+    }
+    public static void nurseInitialize(){
+        if (Player.getCurrentLocation().equals("clinic")) {
+           Npc becky = new Nurse();
+            System.out.println(becky.getGreeting()+" "+becky.getDialogue());
+        try {
+            Thread.sleep(3000);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+            System.out.println("she looks and says......");
+            System.out.println("Oh my! You look ill let me help you");
+            try {
+                Thread.sleep(3000);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        Nurse.giveShot();
         }
     }
 
@@ -40,6 +60,7 @@ public class Navigation {
         }
 
         System.out.println("DESCRIPTION: " + description);
+
     }
 }
 

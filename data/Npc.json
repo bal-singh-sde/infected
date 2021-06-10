@@ -1,0 +1,17 @@
+{
+     "park": {
+    "greeting": "hello, im Dave",
+    "dialogue": "love day out here isn't it",
+    "risk": "2"
+  },
+    "clinic": {
+    "greeting": "welcome, I am Sharon",
+    "dialogue": "perfect place to get a shot",
+    "risk": "0"
+  },
+    "groceryStore": {
+    "greeting": "welcome to piggly wiggly in Jack",
+    "dialogue": "we sell mask",
+    "risk": "3"
+  }
+}
