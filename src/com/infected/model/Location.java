@@ -4,7 +4,11 @@ import com.infected.util.TextParser;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Location {
     private static final File jsonSource = new File("./data/Location.json");
@@ -81,5 +85,33 @@ public class Location {
     } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static List<String> findItems(String location) {
+        List<String> items = new ArrayList<>();
+        JsonNode locationItemsNode = getLocationItemsNode();
+        LinkedHashMap<String, Integer> locationItemMap = TextParser.jsonNodeToHashMapInt(locationItemsNode.get(location));
+
+        if (locationItemMap != null) {
+            items = locationItemMap.entrySet().stream()
+                    .filter(entry -> entry.getValue() > 0)
+                    .map(Map.Entry::getKey)
+                    .collect(Collectors.toList());
+        }
+        return items;
+    }
+
+    public static String listDirections(String location) {
+        String directions = "";
+        JsonNode locationNode = getLocationNode().get(location).get("nav");
+        LinkedHashMap<String, Object> locationMap = TextParser.jsonNodeToHashMap(locationNode);
+
+        directions = locationMap.entrySet().stream()
+                .map(entry -> entry.getValue() + " is " + entry.getKey() + ", ")
+                .collect(Collectors.joining());
+
+        directions = directions.substring(0, directions.length() - 2) + '.';
+
+        return directions;
     }
 }

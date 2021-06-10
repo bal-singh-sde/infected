@@ -3,6 +3,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.util.TextParser;
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Navigation {
     private static final File jsonSource = new File("./data/Location.json");
@@ -27,13 +28,18 @@ public class Navigation {
     }
 
     public static void routes () {
-        String route;
         String infectedLevel = "CURRENT CONTAMINATION LEVEL: "+Player.getContaminationLevel();
-        String description = node.get(Player.getCurrentLocation()).get("description").toString().replaceAll(",","\n").replaceAll("\"","");
-        route = node.get(Player.getCurrentLocation()).get("nav").toString().replaceAll("[{}]","").replaceAll(",","\n");
         System.out.println(infectedLevel);
-        System.out.println("DESCRIPTION: \n"+ description);
-        System.out.println("DIRECTIONS YOU CAN GO: \n" + route);
+        String description = "You are at " + Player.getCurrentLocation() + ".";
+        description += " " + Location.listDirections(Player.getCurrentLocation());
+        List<String> items = Location.findItems(Player.getCurrentLocation());
+
+        if (items.size() > 0) {
+            description += " You see the following items: ";
+            description += items.toString();
+        }
+
+        System.out.println("DESCRIPTION: " + description);
     }
 }
 
