@@ -6,6 +6,7 @@
   "skip": "go",
   "get": "get",
   "take": "get",
+  "use": "get",
   "remove": "get",
   "acquire": "get",
   "list": "list",

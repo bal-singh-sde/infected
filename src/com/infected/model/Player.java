@@ -95,14 +95,16 @@ public class Player {
             e.printStackTrace();
         }
     }
-    public static void lowerContaminationLevel(){
+
+    public static void lowerContaminationLevel(int value){
         // lower contamination level
+        if(value<0) return;
         int currentLevel = getContaminationLevel();
         //can not have negative contamination level
-        if(currentLevel <= 3){
+        if(currentLevel <= value){
             currentLevel = 0;
         }else {
-            currentLevel -= 3;
+            currentLevel -= value;
         }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
@@ -157,4 +159,14 @@ public class Player {
             System.out.println("No items at Location");
         }
     }
+
+    public static void useItem(String item) {
+        JsonNode origNode = getPlayerBackPack();
+        LinkedHashMap<String, Integer> map = TextParser.jsonNodeToHashMapInt(origNode);
+        if (map.containsKey(item) && Location.getLocationItemsNode().get(Player.getCurrentLocation()).get(item).asInt() >= 1){
+            lowerContaminationLevel(1);
+            map.remove(item);
+        }
+    }
+
 }

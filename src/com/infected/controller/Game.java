@@ -44,7 +44,13 @@ public class Game {
             } else if ("get".equals(commandArray[0])) {
                 // TODO: check if item is in room. if item is valid, pick up item, else display error
                 Player.addItem(commandArray[1]);
-            } else if ("list".equals(commandArray[0])) {
+            }
+
+            else if("use".equals(commandArray[0])){
+                Player.useItem(commandArray[1]);
+            }
+
+            else if ("list".equals(commandArray[0])) {
                 // TODO: check if list item exists. if list item exists, list the item, else display error
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
