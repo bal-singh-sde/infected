@@ -1,7 +1,6 @@
 package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.infected.model.Location;
 import com.infected.model.Navigation;
 import com.infected.model.Player;
 import com.infected.model.World;
@@ -38,15 +37,12 @@ public class Game {
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
             } else if ("go".equals(commandArray[0])) {
-                // TODO: check if move is valid. if move is valid, move player to new location else display error
                 Navigation.go(commandArray[1]);
-                printCurrentLocation();
+                Navigation.routes();
             } else if ("get".equals(commandArray[0])) {
-                // TODO: check if item is in room. if item is valid, pick up item, else display error
                 Player.addItem(commandArray[1]);
                 System.out.println("Items in your BackPack: " + Player.getPlayerBackPack().toString());
             } else if ("list".equals(commandArray[0])) {
-                // TODO: check if list item exists. if list item exists, list the item, else display error
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 }
@@ -60,13 +56,7 @@ public class Game {
 
     private void printIntro() {
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
-        System.out.println("\nA new virus have spread around the community and there are chances that you can get infected. \n" +
-                "\nYou are at home you have the option to quit, quarantine(lower contamination level to 0)or go west. \nSelect the following command:");
-        System.out.println("\n- go west \n- quit \n- quarantine");
-    }
-
-    private void printCurrentLocation() {
-        System.out.println("Current location: " + Player.getCurrentLocation());
+        System.out.println("\nA new virus have spread around the community and there are chances that you can get infected.");
         Navigation.routes();
     }
 
@@ -80,7 +70,7 @@ public class Game {
 
             if (commandArray.length == 2 && "resume".equals(commandArray[0])) {
                 if ("game".equals(commandArray[1])) {
-                    printCurrentLocation();
+                    Navigation.routes();
                     break;
                 }
             } else if (commandArray.length == 2 && "reset".equals(commandArray[0])) {
