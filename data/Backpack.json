@@ -1,4 +1,4 @@
 {
-  "mask" : 2,
-  "sanitizer" : 1
+  "mask" : 0,
+  "sanitizer" : 0
 }
