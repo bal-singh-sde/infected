@@ -109,14 +109,15 @@ public class Player {
             e.printStackTrace();
         }
     }
-    public static void lowerContaminationLevel(){
+    public static void lowerContaminationLevel(int value){
         // lower contamination level
+        if(value<0) return;
         int currentLevel = getContaminationLevel();
         //can not have negative contamination level
-        if(currentLevel <= 3){
+        if(currentLevel <= value){
             currentLevel = 0;
         }else {
-            currentLevel -= 3;
+            currentLevel -= value;
         }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
@@ -174,5 +175,27 @@ public class Player {
         else {
             System.out.println("No items at Location");
         }
+    }
+    public static void useItem(String item) {
+        lowerContaminationLevel(1);
+        deleteItem(item);
+    }
+    public static void deleteItem(String item) {
+        JsonNode origNode = getPlayerBackPack();
+        LinkedHashMap<String, Integer> map = TextParser.jsonNodeToHashMapInt(origNode);
+        if (map.containsKey(item)) {
+            if(map.get(item) >=1 && map.get(item) <=5){
+                map.put(item, map.get(item) - 1);
+            }
+                JsonNode finalNode = TextParser.getDefaultObjectMapper().convertValue(map, JsonNode.class);
+                try {
+                    TextParser.write(backPackSource, finalNode);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            else {
+                System.out.println("Item not in the bag pack");
+            }
     }
 }
