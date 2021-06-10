@@ -15,7 +15,6 @@ public class Player {
     private static final File backPackSourceDefault = new File("./data/default/Backpack.json");
 
 
-
     public static JsonNode getPlayerNode() {
         try {
             return TextParser.parse(jsonSource);
@@ -73,7 +72,7 @@ public class Player {
     }
 
     public static void setContaminationLevel(int level) {
-        if(level<0)return;
+        if (level < 0) return;
 
         JsonNode newContam = overWriteContaminationSetup(level);
         try {
@@ -83,47 +82,53 @@ public class Player {
             ioException.printStackTrace();
         }
     }
-    public static JsonNode overWriteLocationSetup(String value){
+
+    public static JsonNode overWriteLocationSetup(String value) {
         //overwrite josn file with new string value
         JsonNode currContam = getPlayerNode();
         JsonNode newContam = TextParser.getNewNode(currContam, "currentLocation", value);
 
         return newContam;
     }
-    public static JsonNode overWriteContaminationSetup(int value){
+
+    public static JsonNode overWriteContaminationSetup(int value) {
         //overwrite josn file with new int value
         JsonNode currContam = getPlayerNode();
         JsonNode newContam = TextParser.getNewNode(currContam, "contaminationLevel", value);
 
         return newContam;
     }
-    public static void raiseContaminationLevel(int value){
+
+    public static void raiseContaminationLevel(int value) {
         // raises contamination level
-        if(value<0) return;
+        if (value < 0) return;
 
         int currentLevel = getContaminationLevel();
         currentLevel += value;
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-    public static void lowerContaminationLevel(){
+
+    public static void lowerContaminationLevel(int value) {
         // lower contamination level
+        if (value < 0) return;
         int currentLevel = getContaminationLevel();
         //can not have negative contamination level
-        if(currentLevel <= 3){
+        if (currentLevel <= value) {
             currentLevel = 0;
-        }else {
-            currentLevel -= 3;
+        } else {
+            currentLevel -= value;
         }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     public static void quarantine() {
         if (Player.getCurrentLocation().equals("home") && Player.getContaminationLevel() != 0) {
             setContaminationLevel(0);
@@ -166,13 +171,34 @@ public class Player {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }
-            else {
+            } else {
                 System.out.println("Your mask pocket is full");
             }
-        }
-        else {
+        } else {
             System.out.println("No items at Location");
+        }
+    }
+
+    public static void useItem(String item) {
+        lowerContaminationLevel(1);
+        deleteItem(item);
+    }
+
+    public static void deleteItem(String item) {
+        JsonNode origNode = getPlayerBackPack();
+        LinkedHashMap<String, Integer> map = TextParser.jsonNodeToHashMapInt(origNode);
+        if (map.containsKey(item)) {
+            if (map.get(item) >= 1 && map.get(item) <= 5) {
+                map.put(item, map.get(item) - 1);
+            }
+            JsonNode finalNode = TextParser.getDefaultObjectMapper().convertValue(map, JsonNode.class);
+            try {
+                TextParser.write(backPackSource, finalNode);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("Item not in the bag pack");
         }
     }
 }

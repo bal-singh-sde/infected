@@ -46,6 +46,8 @@ public class Game {
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 }
+            } else if("use".equals(commandArray[0])){
+                Player.useItem(commandArray[1]);
             } else if ("quarantine".equals(commandArray[0])) {
                 Player.quarantine();
             } else {
