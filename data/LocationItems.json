@@ -1,7 +1,7 @@
 {
   "home" : {
-    "mask" : 0,
-    "sanitizer" : 0
+    "mask" : 1,
+    "sanitizer" : 1
   },
   "park" : {
     "mask" : 1,

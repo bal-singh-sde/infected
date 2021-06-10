@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 public class Location {
     private static final File jsonSource = new File("./data/Location.json");
     private static final File locationItemsSource = new File("./data/LocationItems.json");
+    private static final File locationsItemsSourceDefault = new File("./data/default/LocationItems.json");
 
     public static JsonNode getLocationNode() {
         try {
@@ -22,6 +23,16 @@ public class Location {
     public static JsonNode getLocationItemsNode() {
         try {
             return TextParser.parse(locationItemsSource);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public static JsonNode getLocationItemsNodeDefault() {
+        try {
+            return TextParser.parse(locationsItemsSourceDefault);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
@@ -45,9 +56,9 @@ public class Location {
     static void removeItem(String item) {
         JsonNode origNode = getLocationItemsNode();
         LinkedHashMap<String, LinkedHashMap<String, Integer>> map = TextParser.jsonNodeToHashMapNested(origNode);
-        if (map.containsKey("home")) {
-            if (map.get("home").get(item) >= 1) {
-                map.get("home").put(item, map.get("home").get(item) - 1);
+        if (map.containsKey(Player.getCurrentLocation())) {
+            if (map.get(Player.getCurrentLocation()).get(item) >= 1) {
+                map.get(Player.getCurrentLocation()).put(item, map.get(Player.getCurrentLocation()).get(item) - 1);
 
                 JsonNode finalNode = TextParser.getDefaultObjectMapper().convertValue(map, JsonNode.class);
                 try {
@@ -59,6 +70,16 @@ public class Location {
             else {
                 System.out.println("No more items");
             }
+        }
+    }
+
+    static void resetLocationItems() {
+    JsonNode newLocationItemsNode = getLocationItemsNodeDefault();
+
+    try {
+        TextParser.write(locationItemsSource, newLocationItemsNode);
+    } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
