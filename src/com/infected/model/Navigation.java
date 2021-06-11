@@ -24,29 +24,39 @@ public class Navigation {
             cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
             Player.setCurrentLocation(cLo);
             Player.raiseContaminationLevel(1);
-           nurseInitialize();
+           npcInitialize();
         }
+    }
+    public static void npcInitialize(){
+        nurseInitialize();
+        clerkInitialize();
     }
     public static void nurseInitialize(){
         if (Player.getCurrentLocation().equals("clinic")) {
-           Npc becky = new Nurse();
-            System.out.println(becky.getGreeting()+" "+becky.getDialogue());
+           Npc sharon = new Nurse();
+            System.out.println(sharon.getGreeting()+" "+sharon.getDialogue());
+            pause();
+            System.out.println("she looks and says......");
+            System.out.println("Oh my! You look ill let me help you");
+           pause();
+        Nurse.giveShot();
+        }
+    }
+    public static void clerkInitialize(){
+        if (Player.getCurrentLocation().equals("groceryStore")) {
+            Npc jack = new StoreClerk();
+            System.out.println(jack.getGreeting()+" "+jack.getDialogue());
+            pause();
+           StoreClerk.cough();
+        }
+    }
+    public static void pause(){
         try {
             Thread.sleep(3000);
         }catch (Exception e){
             e.printStackTrace();
         }
-            System.out.println("she looks and says......");
-            System.out.println("Oh my! You look ill let me help you");
-            try {
-                Thread.sleep(3000);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        Nurse.giveShot();
-        }
     }
-
     public static void routes () {
         String infectedLevel = "CURRENT CONTAMINATION LEVEL: "+Player.getContaminationLevel();
         System.out.println(infectedLevel);

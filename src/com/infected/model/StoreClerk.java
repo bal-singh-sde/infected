@@ -17,4 +17,10 @@ public class StoreClerk extends Npc{
     public  int getRisk(){
         return getNpcNode().get("groceryStore").get("risk").asInt();
     }
+    public static void cough(){
+        System.out.println("........ACHOO!!");
+        Player.raiseContaminationLevel(3);
+        System.out.println("Sorry..excuse me");
+        Navigation.pause();
+    }
 }
