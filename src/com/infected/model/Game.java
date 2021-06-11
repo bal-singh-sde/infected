@@ -8,10 +8,20 @@ import java.io.IOException;
 
 public class Game {
     private static final File jsonSource = new File("./data/Game.json");
+    private static final File cmdSource = new File("./data/Cmd.json");
 
     private static JsonNode getGameNode() {
         try {
             return TextParser.parse(jsonSource);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+        return null;
+    }
+
+    public static JsonNode getCmdNode() {
+        try {
+            return TextParser.parse(cmdSource);
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }

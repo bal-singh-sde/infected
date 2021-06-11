@@ -114,4 +114,9 @@ public class Location {
 
         return directions;
     }
+
+    public static List<String> findCommands(String location) {
+        JsonNode locationNode = getLocationNode().get(location);
+        return TextParser.jsonNodeToListString(locationNode.get("commands"));
+    }
 }
