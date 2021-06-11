@@ -1,6 +1,7 @@
 package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.model.Location;
 import com.infected.model.Navigation;
 import com.infected.model.Player;
 import com.infected.model.World;
@@ -10,6 +11,7 @@ import static com.infected.model.Game.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Game {
     public void start() {
@@ -36,6 +38,8 @@ public class Game {
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
+            } else if ("help".equals(commandArray[0])) {
+                help(Player.getCurrentLocation());
             } else if ("go".equals(commandArray[0])) {
                 Navigation.go(commandArray[1]);
                 Navigation.routes();
@@ -91,13 +95,33 @@ public class Game {
         File jsonFile = new File("data/Cmd.json");
         try {
             JsonNode node = TextParser.parse(jsonFile);
-            if(node.has(input)){
-                return node.get(input).textValue();
+            if (node.get("synonyms").has(input)){
+                return node.get("synonyms").get(input).textValue();
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
         return input;
+    }
+
+    public static void help(String location) {
+        JsonNode cmdNode = getCmdNode();
+        List<String> commands = Location.findCommands(location);
+        List<String> globalCommands = TextParser.jsonNodeToListString(cmdNode.get("globalCommands"));
+
+        System.out.println("Available Commands");
+
+        // commands available at current location
+        if (commands.size() > 0) {
+            for (String command : commands) {
+                System.out.println("- " + command);
+            }
+        }
+
+        // global commands
+        for (String globalCommand : globalCommands) {
+            System.out.println("- " + globalCommand);
+        }
     }
 }
