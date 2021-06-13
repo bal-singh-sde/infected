@@ -1,5 +1,6 @@
 package com.infected.model;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Converter;
 import com.infected.util.TextParser;
 import java.io.File;
 import java.io.IOException;
@@ -49,6 +50,14 @@ public class Location {
 
     public static int getMaxCapacity(String location) {
         return getLocationNode().get(location).get("maxCapacity").asInt();
+    }
+    public static String getNextLocation(String destination) {
+        return getLocationNode().get(Player.getCurrentLocation()).get("nav").get(destination).asText();
+    }
+
+    public static int getMaxCapacityOfNextLocation(String destination) {
+        String nextLocation = getLocationNode().get(Player.getCurrentLocation()).get("nav").get(destination).asText();
+        return getLocationNode().get(nextLocation).get("maxCapacity").asInt();
     }
 
     public static String getCapacityLimit(String location) {
@@ -119,4 +128,21 @@ public class Location {
         JsonNode locationNode = getLocationNode().get(location);
         return TextParser.jsonNodeToListString(locationNode.get("commands"));
     }
+
+    public static Integer currentCapacity(String destination) {
+        JsonNode locations = Location.getLocationNode();
+        Integer result = 0;
+        String nextLocation = locations.get(Player.getCurrentLocation()).get("nav").get(destination).asText();
+        if (!locations.get(nextLocation).get("street").asBoolean()) {
+            int min = 0;
+            int max = Location.getMaxCapacity(nextLocation) + 2;
+            result = (int) Math.floor(Math.random()*(max-min+1)+min);
+        } else {
+            int min = 10;
+            int max = Location.getMaxCapacity(nextLocation) + 10;
+            result = (int) Math.floor(Math.random()*(max-min+1)+min);
+        }
+        return result;
+    }
+
 }
