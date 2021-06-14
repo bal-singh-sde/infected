@@ -17,10 +17,12 @@ public class World {
         LinkedHashMap<String, Object> locationMap = TextParser.jsonNodeToHashMap(locationNode);
 
         for (String locationName : locationMap.keySet()) {
-            System.out.println(
-                    locationName + " capacity: " +
-                    Location.getCapacityLimit(locationName)
-            );
+            if (!locationNode.get(locationName).get("street").asBoolean()) {
+                System.out.println(
+                        locationName + " capacity: " +
+                                Location.getCapacityLimit(locationName)
+                );
+            }
         }
     }
 }
