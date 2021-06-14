@@ -69,6 +69,7 @@ public class Player {
 
     public static int getContaminationLevel() {
         return getPlayerNode().get("contaminationLevel").asInt();
+
     }
 
     public static void setContaminationLevel(int level) {
@@ -105,6 +106,9 @@ public class Player {
 
         int currentLevel = getContaminationLevel();
         currentLevel += value;
+        if(currentLevel >= 15){
+            System.out.println("Warning!!!!. If Player contamination reach 20 then player will loose game.");
+        }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
         } catch (IOException e) {
