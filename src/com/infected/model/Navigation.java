@@ -56,10 +56,10 @@ public class Navigation {
             Npc sharon = new Nurse();
             System.out.println(sharon.getGreeting() + " " + sharon.getDialogue());
             MusicPlayer.playHospitalSound();
-            Pause.pause();
+            Pause.pause(3000);
             System.out.println("she looks and says......");
             System.out.println("Oh my! You look ill let me help you");
-            Pause.pause();
+            Pause.pause(3000);
             Nurse.giveShot();
         }
     }
@@ -68,7 +68,7 @@ public class Navigation {
         if (Player.getCurrentLocation().equals("groceryStore")) {
             Npc jack = new StoreClerk();
             System.out.println(jack.getGreeting() + " " + jack.getDialogue());
-            Pause.pause();
+            Pause.pause(3000);
             StoreClerk.cough();
         }
     }

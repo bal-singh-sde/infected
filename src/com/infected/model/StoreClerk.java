@@ -27,6 +27,6 @@ public class StoreClerk extends Npc {
         System.out.println("........ACHOO!!");
         Player.raiseContaminationLevel(3);
         System.out.println("Sorry..excuse me");
-        Pause.pause();
+        Pause.pause(3000);
     }
 }

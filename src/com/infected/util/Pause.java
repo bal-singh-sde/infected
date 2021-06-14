@@ -1,18 +1,12 @@
 package com.infected.util;
 
 public class Pause {
-    public static void pause() {
+    public static void pause(int duration) {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(duration);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static void pause2() {
-        try {
-            Thread.sleep(400);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+
 }

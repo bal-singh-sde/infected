@@ -20,7 +20,7 @@ public class MusicPlayer {
         String path = "sounds/walk.mp3";
         for(int i=0; i<3;i++){
             MusicPlayer.playSound(path);
-            Pause.pause2();
+            Pause.pause(400);
         }
     }
     public static void playDoorSound(){
