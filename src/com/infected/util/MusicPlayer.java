@@ -47,10 +47,4 @@ public class MusicPlayer {
         String path = "sounds/win.mp3";
         MusicPlayer.playSound(path);
     }
-    public static void main(String[]args){
-        MusicPlayer.loseSound();
-        Pause.pause(5000);
-        System.exit(0);
-    }
-
 }
