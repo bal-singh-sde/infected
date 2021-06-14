@@ -1,10 +1,7 @@
 package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.infected.model.Location;
-import com.infected.model.Navigation;
-import com.infected.model.Player;
-import com.infected.model.World;
+import com.infected.model.*;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
 import static com.infected.model.Game.*;
@@ -46,11 +43,15 @@ public class Game {
             } else if ("get".equals(commandArray[0])) {
                 Player.addItem(commandArray[1]);
                 System.out.println("Items in your BackPack: " + Player.getPlayerBackPack().toString());
-            } else if ("list".equals(commandArray[0])) {
+            } else if ("show".equals(commandArray[0])) {
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
+                } else if ("map".equals(commandArray[1])) {
+                    Map.readMap();
+                } else {
+                    System.out.println("Invalid command");
                 }
-            } else if("use".equals(commandArray[0])){
+            } else if ("use".equals(commandArray[0])){
                 Player.useItem(commandArray[1]);
             } else if ("quarantine".equals(commandArray[0])) {
                 Player.quarantine();

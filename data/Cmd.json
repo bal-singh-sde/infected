@@ -1,5 +1,5 @@
 {
-  "globalCommands": ["list worldstats", "quit"],
+  "globalCommands": ["show worldstats", "show map", "quit"],
   "synonyms": {
     "go": "go",
     "walk": "go",
@@ -10,9 +10,9 @@
     "take": "get",
     "remove": "get",
     "acquire": "get",
-    "list": "list",
-    "show": "list",
-    "display": "list",
+    "show": "show",
+    "display": "show",
+    "list": "show",
     "quit": "quit",
     "exit": "quit",
     "leave": "quit",
