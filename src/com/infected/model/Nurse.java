@@ -1,6 +1,8 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.MusicPlayer;
+import com.infected.util.Pause;
 
 public class Nurse extends Npc {
     JsonNode nurseNode = getNpcNode();
@@ -21,6 +23,8 @@ public class Nurse extends Npc {
     }
 
     public static void giveShot() {
+        MusicPlayer.winSound();
+        Pause.pause(6000);
         Player.setContaminationLevel(0);
         System.out.println("You won the game!");
         System.exit(0);

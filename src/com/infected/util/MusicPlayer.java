@@ -39,5 +39,18 @@ public class MusicPlayer {
         String path = "sounds/new.mp3";
         MusicPlayer.playSound(path);
     }
+    public static void loseSound(){
+        String path = "sounds/lose.mp3";
+        MusicPlayer.playSound(path);
+    }
+    public static void winSound(){
+        String path = "sounds/win.mp3";
+        MusicPlayer.playSound(path);
+    }
+    public static void main(String[]args){
+        MusicPlayer.loseSound();
+        Pause.pause(5000);
+        System.exit(0);
+    }
 
 }
