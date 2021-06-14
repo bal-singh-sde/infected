@@ -1,5 +1,6 @@
 {
   "home": {
+    "street": false,
     "commands": ["quarantine"],
     "description": "You are at home, you have the option to quarantine(lower contamination level to 0) if noty already at 0,or go to directions listed below",
     "nav": {
@@ -9,6 +10,7 @@
     "maxCapacity" : 10
   },
   "park": {
+    "street": false,
     "commands": [],
     "description": "You are at the Park, You see people with no mask and a mask on the ground, You have the option to get dirtymask, and or go to directions listed below",
     "nav": {
@@ -19,6 +21,7 @@
     "maxCapacity" : 30
   },
   "groceryStore": {
+    "street": false,
     "commands": [],
     "description": "You are at the grocery store, You see sanitizers(lower you contamination level by 5), You have to get sanitizer and or go to directions listed below",
     "nav": {
@@ -28,6 +31,7 @@
     "maxCapacity" : 100
   },
   "lake": {
+    "street": false,
     "commands": [],
     "description": "You are at the lake, It is blue and beautiful and you see no items to interact with, You have the option to go to directions listed below",
     "nav": {
@@ -37,6 +41,7 @@
     "maxCapacity" : 200
   },
   "clinic": {
+    "street": false,
     "commands": [],
     "description": "You are at the clinic, There is a lot of busy nurses, You see and sign label vaccine 1 and see a vaccineNumber1 on the counter, You can get vaccine1 and or you have the option to go to directions listed below",
     "nav": {
@@ -46,6 +51,7 @@
     "maxCapacity" : 100
   },
   "vaccineSite": {
+    "street": false,
     "commands": [],
     "description": "You are at the vaccine site, You see CDC personnel and sign label vaccine 2 and see a vaccineNumber2 on the counter, You can get vaccine2 and or you have the option to, go to directions listed below",
     "nav": {
@@ -55,6 +61,7 @@
     "maxCapacity" : 100
   },
   "mainBlockTwo": {
+    "street": true,
     "commands": [],
     "description": "You are on Main Block Two, You have the option to go to directions listed below",
     "nav": {
@@ -67,6 +74,7 @@
     "maxCapacity" : 20
   },
   "mainBlockOne": {
+    "street": true,
     "commands": [],
     "description": "You are on Main Block One, You have the option to go to directions listed below",
     "nav": {
@@ -79,6 +87,7 @@
     "maxCapacity" : 20
   },
   "secondBlockTwo": {
+    "street": true,
     "commands": [],
     "description": "You are on Second Block Two, You have the option to go to directions listed below",
     "nav": {
@@ -90,6 +99,7 @@
     "maxCapacity" : 20
   },
   "secondBlockOne": {
+    "street": true,
     "commands": [],
     "description": "You are on Second Block One, You have the option to go to directions listed below",
     "nav": {
@@ -101,6 +111,7 @@
     "maxCapacity" : 20
   },
   "firstBlockOne": {
+    "street": true,
     "commands": [],
     "description": "You are on First Block Two, You have the option to go to directions listed below",
     "nav": {
@@ -111,6 +122,7 @@
     "maxCapacity" : 20
   },
   "firstBlockTwo": {
+    "street": true,
     "commands": [],
     "description": "You are on First Block One, You have the option to go to directions listed below",
     "nav": {
@@ -122,6 +134,7 @@
     "maxCapacity" : 20
   },
   "westLakeBlockTwo": {
+    "street": true,
     "commands": [],
     "description": "You are on West Lake Block Two, You have the option to go to directions listed below",
     "nav": {
@@ -133,6 +146,7 @@
     "maxCapacity" : 20
   },
   "westLakeBlockOne": {
+    "street": true,
     "commands": [],
     "description": "You are on West Lake Block One, You have the option to go to directions listed below",
     "nav": {
@@ -144,6 +158,7 @@
     "maxCapacity" : 20
   },
   "mainXFirst": {
+    "street": true,
     "commands": [],
     "description": "You are at the intersection of mainBlockOne and firstBlockTwo. You have the option to go west or south",
     "nav": {
@@ -154,6 +169,7 @@
     "maxCapacity" : 20
   },
   "mainXSecond": {
+    "street": true,
     "commands": [],
     "description": "You are at intersection of mainBlockTwo and secondBlockTwo. You have the option to go west or north",
     "nav": {
@@ -164,6 +180,7 @@
     "maxCapacity" : 20
   },
   "westLakeXSecond": {
+    "street": true,
     "commands": [],
     "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
     "nav": {
@@ -174,6 +191,7 @@
     "maxCapacity" : 20
   },
   "westLakeXFirst": {
+    "street": true,
     "commands": [],
     "description": "You are on West Lake Block Two and Second Block One. You have the option to go east or north",
     "nav": {

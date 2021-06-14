@@ -22,12 +22,20 @@ public class Navigation {
     }
 
     public static void go(String destination) {
-        String cLo = null;
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
-            cLo = String.valueOf(node.get(Player.getCurrentLocation()).get("nav").get(destination)).replaceAll("\"", "");
-            Player.setCurrentLocation(cLo);
-            Player.raiseContaminationLevel(1);
-            npcInitialize();
+            if (node.get(Location.getNextLocation(destination)).get("street").asBoolean()) {
+                Player.setCurrentLocation(Location.getNextLocation(destination));
+                Player.raiseContaminationLevel(1);
+                npcInitialize();
+            } else {
+                if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)){
+                    Player.setCurrentLocation(Location.getNextLocation(destination));
+                    Player.raiseContaminationLevel(1);
+                    npcInitialize();
+                } else {
+                    System.out.println("Current capacity of " + Location.getNextLocation(destination) + " is " + Location.currentCapacity(destination) + ". Max capacity is " + Location.getMaxCapacity(Player.getCurrentLocation()));
+                }
+            }
         }
     }
 
@@ -68,9 +76,7 @@ public class Navigation {
             description += " You see the following items: ";
             description += items.toString();
         }
-
         System.out.println("DESCRIPTION: " + description);
 
     }
 }
-
