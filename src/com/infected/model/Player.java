@@ -69,7 +69,6 @@ public class Player {
 
     public static int getContaminationLevel() {
         return getPlayerNode().get("contaminationLevel").asInt();
-
     }
 
     public static void setContaminationLevel(int level) {
@@ -103,7 +102,6 @@ public class Player {
     public static void raiseContaminationLevel(int value) {
         // raises contamination level
         if (value < 0) return;
-
         int currentLevel = getContaminationLevel();
         currentLevel += value;
         if(currentLevel >= 15){
