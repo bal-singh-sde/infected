@@ -1,18 +1,13 @@
 package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.infected.model.Location;
-import com.infected.model.Navigation;
-import com.infected.model.Player;
-import com.infected.model.World;
-import com.infected.util.AsciiParser;
+import com.infected.model.*;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
 import static com.infected.model.Game.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
 import java.util.List;
 
 public class Game {
@@ -52,7 +47,7 @@ public class Game {
                 if ("worldstats".equals(commandArray[1])) {
                     World.printWorldStats();
                 } else if ("map".equals(commandArray[1])) {
-                    AsciiParser.parse(Path.of("./ascii/", "map.txt"));
+                    Map.readMap();
                 } else {
                     System.out.println("Invalid command");
                 }
