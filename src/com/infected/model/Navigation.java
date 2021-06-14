@@ -25,13 +25,13 @@ public class Navigation {
                 Player.raiseContaminationLevel(1);
             } else {
                 if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)){
-                        Player.setCurrentLocation(Location.getNextLocation(destination));
-                        Player.raiseContaminationLevel(1);
-                        } else {
-                            System.out.println("Current capacity of " + Location.getNextLocation(destination) + " is " + Location.currentCapacity(destination) + ". Max capacity is " + Location.getMaxCapacity(Player.getCurrentLocation()));
-                        }
-                    }
+                    Player.setCurrentLocation(Location.getNextLocation(destination));
+                    Player.raiseContaminationLevel(1);
+                } else {
+                    System.out.println("Current capacity of " + Location.getNextLocation(destination) + " is " + Location.currentCapacity(destination) + ". Max capacity is " + Location.getMaxCapacity(Player.getCurrentLocation()));
+                }
             }
+        }
     }
 
     public static void routes () {

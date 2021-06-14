@@ -56,8 +56,7 @@ public class Location {
     }
 
     public static int getMaxCapacityOfNextLocation(String destination) {
-        String nextLocation = getLocationNode().get(Player.getCurrentLocation()).get("nav").get(destination).asText();
-        return getLocationNode().get(nextLocation).get("maxCapacity").asInt();
+        return getLocationNode().get(getNextLocation(destination)).get("maxCapacity").asInt();
     }
 
     public static String getCapacityLimit(String location) {
@@ -132,14 +131,13 @@ public class Location {
     public static Integer currentCapacity(String destination) {
         JsonNode locations = Location.getLocationNode();
         Integer result = 0;
-        String nextLocation = locations.get(Player.getCurrentLocation()).get("nav").get(destination).asText();
-        if (!locations.get(nextLocation).get("street").asBoolean()) {
+        if (!locations.get(getNextLocation(destination)).get("street").asBoolean()) {
             int min = 0;
-            int max = Location.getMaxCapacity(nextLocation) + 2;
+            int max = Location.getMaxCapacity(getNextLocation(destination)) + 2;
             result = (int) Math.floor(Math.random()*(max-min+1)+min);
         } else {
             int min = 10;
-            int max = Location.getMaxCapacity(nextLocation) + 10;
+            int max = Location.getMaxCapacity(getNextLocation(destination)) + 10;
             result = (int) Math.floor(Math.random()*(max-min+1)+min);
         }
         return result;
