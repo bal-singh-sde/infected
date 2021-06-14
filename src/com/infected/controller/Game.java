@@ -3,6 +3,7 @@ package com.infected.controller;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.*;
 import com.infected.util.MusicPlayer;
+import com.infected.util.Pause;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
 import static com.infected.model.Game.*;
@@ -20,23 +21,14 @@ public class Game {
         }
 
         while (true) {
-            boolean secondShot = false;
-
-            if (Player.getCurrentLocation().equals("clinic")) {
-                secondShot = true;
-            }
-
-            if (secondShot) {
-                System.out.println("You won the game!");
-                System.exit(0);
-            }
-
             String[] commandArray = TextScanner.newScanner();
             commandArray[0] = getProcessedVerb(commandArray[0]);
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
             } else if(Player.getContaminationLevel() >= 20 ){
+                MusicPlayer.loseSound();
+                Pause.pause(6000);
                 System.out.println("Sorry!!!You lost!!! Please try again.");
                 com.infected.model.Game.clearGameData();
                 System.exit(0);
