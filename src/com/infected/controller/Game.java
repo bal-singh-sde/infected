@@ -2,6 +2,7 @@ package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.*;
+import com.infected.util.MusicPlayer;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
 import static com.infected.model.Game.*;
@@ -62,6 +63,7 @@ public class Game {
     }
 
     private void printIntro() {
+        MusicPlayer.startSound();
         System.out.println("# Welcome to the World of INFECTED!!!!!!!");
         System.out.println("\nA new virus have spread around the community and there are chances that you can get infected.");
         Navigation.routes();

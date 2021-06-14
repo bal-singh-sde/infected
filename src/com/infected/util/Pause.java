@@ -8,4 +8,11 @@ public class Pause {
             e.printStackTrace();
         }
     }
+    public static void pause2() {
+        try {
+            Thread.sleep(400);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
