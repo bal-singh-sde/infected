@@ -1,6 +1,7 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Animation;
 import com.infected.util.TextParser;
 
 import java.io.File;
@@ -102,9 +103,11 @@ public class Player {
     public static void raiseContaminationLevel(int value) {
         // raises contamination level
         if (value < 0) return;
-
         int currentLevel = getContaminationLevel();
         currentLevel += value;
+        if(currentLevel >= 15){
+            Animation.printRed("Warning!!!!. If Player contamination reaches 20 then player will lose game.");
+        }
         try {
             TextParser.write(jsonSource, overWriteContaminationSetup(currentLevel));
         } catch (IOException e) {
@@ -181,6 +184,7 @@ public class Player {
 
     public static void useItem(String item) {
         lowerContaminationLevel(1);
+        Animation.newPrint("CURRENT CONTAMINATION LEVEL: " + Player.getContaminationLevel());
         deleteItem(item);
     }
 

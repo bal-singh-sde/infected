@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 public class TextParser {
 
@@ -53,7 +54,29 @@ public class TextParser {
         return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, Integer>>(){});
     }
 
+    public static List<String> jsonNodeToListString(JsonNode jsonNode) {
+        return objectMapper.convertValue(jsonNode, new TypeReference<List<String>>(){});
+    }
+
+    public static List<Integer> jsonNodeToListInteger(JsonNode jsonNode) {
+        return objectMapper.convertValue(jsonNode, new TypeReference<List<Integer>>(){});
+    }
+
+    public static int[] jsonNodeToArrayInt(JsonNode jsonNode) {
+        return jsonNodeToListInteger(jsonNode).stream().mapToInt(i->i).toArray();
+    }
+
     public static LinkedHashMap<String, LinkedHashMap<String, Integer>> jsonNodeToHashMapNested(JsonNode jsonNode) {
         return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, LinkedHashMap<String, Integer>>>() {});
+    }
+
+    public static JsonNode getNode(String jsonSource) {
+        File fileSource = new File(jsonSource);
+        try {
+            return TextParser.parse(fileSource);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

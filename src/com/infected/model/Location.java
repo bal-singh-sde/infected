@@ -50,11 +50,23 @@ public class Location {
     public static int getMaxCapacity(String location) {
         return getLocationNode().get(location).get("maxCapacity").asInt();
     }
+    public static String getNextLocation(String destination) {
+        return getLocationNode().get(Player.getCurrentLocation()).get("nav").get(destination).asText();
+    }
+
+    public static int getMaxCapacityOfNextLocation(String destination) {
+        return getLocationNode().get(getNextLocation(destination)).get("maxCapacity").asInt();
+    }
 
     public static String getCapacityLimit(String location) {
         double capacity = (double) getCurrentCapacity(location) / (double) getMaxCapacity(location);
         DecimalFormat df = new DecimalFormat("#%");
         return df.format(capacity);
+    }
+
+    public static int[] getCoords(String location) {
+        JsonNode coordinatesNode = getLocationNode().get(location).get("coordinates");
+        return TextParser.jsonNodeToArrayInt(coordinatesNode);
     }
 
     static void removeItem(String item) {
@@ -114,4 +126,25 @@ public class Location {
 
         return directions;
     }
+
+    public static List<String> findCommands(String location) {
+        JsonNode locationNode = getLocationNode().get(location);
+        return TextParser.jsonNodeToListString(locationNode.get("commands"));
+    }
+
+    public static Integer currentCapacity(String destination) {
+        JsonNode locations = Location.getLocationNode();
+        Integer result = 0;
+        if (!locations.get(getNextLocation(destination)).get("street").asBoolean()) {
+            int min = 0;
+            int max = Location.getMaxCapacity(getNextLocation(destination)) + 2;
+            result = (int) Math.floor(Math.random()*(max-min+1)+min);
+        } else {
+            int min = 10;
+            int max = Location.getMaxCapacity(getNextLocation(destination)) + 10;
+            result = (int) Math.floor(Math.random()*(max-min+1)+min);
+        }
+        return result;
+    }
+
 }
