@@ -58,6 +58,10 @@ public class Game {
                 if ("animation".equals(commandArray[1])) {
                     Animation.turnOffAnimation();
                 }
+            } else if ("yes".equals(commandArray[0])) {
+                if ("animation".equals(commandArray[1])) {
+                    Animation.turnOnAnimation();
+                }
             } else {
                 System.out.println("Invalid command");
             }

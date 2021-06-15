@@ -1,5 +1,5 @@
 {
-  "globalCommands": ["show worldstats", "show map", "quit"],
+  "globalCommands": ["show worldstats", "show map", "quit", "no animation", "yes animation"],
   "synonyms": {
     "go": "go",
     "walk": "go",
