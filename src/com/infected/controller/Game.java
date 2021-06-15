@@ -27,11 +27,11 @@ public class Game {
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
-            } else if(Player.getContaminationLevel() >= 20 ){
+            } else if(Player.getContaminationLevel() >= 19 ){
                 MusicPlayer.loseSound();
                 Pause.pause(6000);
                 System.out.println("Sorry!!!You lost!!! Please try again.");
-                com.infected.model.Game.clearGameData();
+                clearGameData();
                 System.exit(0);
             } else if ("help".equals(commandArray[0])) {
                 help(Player.getCurrentLocation());
