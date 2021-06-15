@@ -7,6 +7,7 @@ import com.infected.util.MusicPlayer;
 import com.infected.util.Pause;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
+
 import static com.infected.model.Game.*;
 
 import java.io.File;
@@ -27,7 +28,7 @@ public class Game {
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
-            } else if(Player.getContaminationLevel() >= 20 ){
+            } else if (Player.getContaminationLevel() >= 20) {
                 MusicPlayer.loseSound();
                 Pause.pause(6000);
                 System.out.println("Sorry!!!You lost!!! Please try again.");
@@ -49,24 +50,22 @@ public class Game {
                 } else {
                     System.out.println("Invalid command");
                 }
-            } else if ("use".equals(commandArray[0])){
+            } else if ("use".equals(commandArray[0])) {
                 Player.useItem(commandArray[1]);
             } else if ("quarantine".equals(commandArray[0])) {
                 Player.quarantine();
-            }
-            else if ("no".equals(commandArray[0])) {
+            } else if ("no".equals(commandArray[0])) {
                 if ("animation".equals(commandArray[1])) {
                     Animation.turnOffAnimation();
                 }
-            } else
-             {
+            } else {
                 System.out.println("Invalid command");
             }
         }
     }
 
     private void printIntro() {
-        Animation.printBox("Welcome to the World of INFECTED!!!!!!!","A new virus have spread around the community and there are chances that you can get infected.");
+        Animation.printBox("Welcome to the World of INFECTED!!!!!!!", "A new virus have spread around the community and there are chances that you can get infected.");
         MusicPlayer.startSound();
         Navigation.routes();
     }
@@ -100,7 +99,7 @@ public class Game {
         File jsonFile = new File("data/Cmd.json");
         try {
             JsonNode node = TextParser.parse(jsonFile);
-            if (node.get("synonyms").has(input)){
+            if (node.get("synonyms").has(input)) {
                 return node.get("synonyms").get(input).textValue();
             }
 
