@@ -19,24 +19,20 @@ public class Animation {
     public static final String ANSI_WHITE = "\u001B[37m";
 
     public static void turnOffAnimation() {
-        if (!isGameSaved()) {
-            JsonNode newGameNode = TextParser.getNewNode(TextParser.getNode("./data/Animation.json"), "animation", false);
-            try {
-                TextParser.write(new File("./data/Animation.json"), newGameNode);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+        JsonNode newGameNode = TextParser.getNewNode(TextParser.getNode("./data/Animation.json"), "animation", false);
+        try {
+            TextParser.write(new File("./data/Animation.json"), newGameNode);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
     }
 
     public static void turnOnAnimation() {
-        if (!isGameSaved()) {
-            JsonNode newGameNode = TextParser.getNewNode(TextParser.getNode("./data/Animation.json"), "animation", true);
-            try {
-                TextParser.write(new File("./data/Animation.json"), newGameNode);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            }
+        JsonNode newGameNode = TextParser.getNewNode(TextParser.getNode("./data/Animation.json"), "animation", true);
+        try {
+            TextParser.write(new File("./data/Animation.json"), newGameNode);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
         }
     }
 
@@ -52,11 +48,11 @@ public class Animation {
     public static void newPrint(String s) {
         if (TextParser.getNode("./data/Animation.json").get("animation").asBoolean()) {
             int i;
-            for(i = 0; i < s.length(); i++){
+            for (i = 0; i < s.length(); i++) {
                 System.out.printf("%c", s.charAt(i));
-                try{
+                try {
                     Thread.sleep(30);//0.5s pause between characters
-                }catch(InterruptedException ex){
+                } catch (InterruptedException ex) {
                     Thread.currentThread().interrupt();
                 }
             }
@@ -99,5 +95,9 @@ public class Animation {
 
     public static void printYellow(String s) {
         System.out.print(ANSI_YELLOW + s + ANSI_RESET);
+    }
+
+    public static void printRed(String s) {
+        System.out.println(ANSI_RED + s + ANSI_RESET);
     }
 }
