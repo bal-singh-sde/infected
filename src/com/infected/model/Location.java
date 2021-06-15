@@ -1,6 +1,5 @@
 package com.infected.model;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.infected.util.Converter;
 import com.infected.util.TextParser;
 import java.io.File;
 import java.io.IOException;
@@ -63,6 +62,11 @@ public class Location {
         double capacity = (double) getCurrentCapacity(location) / (double) getMaxCapacity(location);
         DecimalFormat df = new DecimalFormat("#%");
         return df.format(capacity);
+    }
+
+    public static int[] getCoords(String location) {
+        JsonNode coordinatesNode = getLocationNode().get(location).get("coordinates");
+        return TextParser.jsonNodeToArrayInt(coordinatesNode);
     }
 
     static void removeItem(String item) {

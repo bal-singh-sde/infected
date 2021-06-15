@@ -22,23 +22,26 @@ public class Navigation {
         }
     }
 
+    public static void updateNavigationData(String destination) {
+        Map.updateMap(Player.getCurrentLocation(), Location.getNextLocation(destination));
+        Player.setCurrentLocation(Location.getNextLocation(destination));
+        Player.raiseContaminationLevel(1);
+        npcInitialize();
+    }
+
     public static void go(String destination) {
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             if (node.get(Location.getNextLocation(destination)).get("street").asBoolean()) {
                 MusicPlayer.playWalkSound();
-                Player.setCurrentLocation(Location.getNextLocation(destination));
-                Player.raiseContaminationLevel(1);
-                npcInitialize();
+                updateNavigationData(destination);
             } else {
-                if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)){
-                    if(node.get(Location.getNextLocation(destination)).get("indoor").asBoolean()){
+                if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)) {
+                    if (node.get(Location.getNextLocation(destination)).get("indoor").asBoolean()) {
                         MusicPlayer.playDoorSound();
-                    }else {
+                    } else {
                         MusicPlayer.playWalkSound();
                     }
-                        Player.setCurrentLocation(Location.getNextLocation(destination));
-                    Player.raiseContaminationLevel(1);
-                    npcInitialize();
+                    updateNavigationData(destination);
                 } else {
                     System.out.println("Current capacity of " + Location.getNextLocation(destination) + " is " + Location.currentCapacity(destination) + ". Max capacity is " + Location.getMaxCapacity(Player.getCurrentLocation()));
                 }
