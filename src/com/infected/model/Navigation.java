@@ -1,6 +1,7 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Animation;
 import com.infected.util.MusicPlayer;
 import com.infected.util.Pause;
 import com.infected.util.TextParser;
@@ -87,7 +88,6 @@ public class Navigation {
             description += " You see the following items: ";
             description += items.toString();
         }
-        System.out.println("DESCRIPTION: " + description);
-
+        Animation.newPrint("DESCRIPTION: " + description);
     }
 }
