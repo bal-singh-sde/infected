@@ -27,7 +27,17 @@ public class Animation {
                 ioException.printStackTrace();
             }
         }
+    }
 
+    public static void turnOnAnimation() {
+        if (!isGameSaved()) {
+            JsonNode newGameNode = TextParser.getNewNode(TextParser.getNode("./data/Animation.json"), "animation", true);
+            try {
+                TextParser.write(new File("./data/Animation.json"), newGameNode);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            }
+        }
     }
 
     public static void resetAnimation() {
