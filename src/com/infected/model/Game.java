@@ -50,6 +50,7 @@ public class Game {
 
     public static void clearGameData() {
         Player.resetPlayer();
+        Map.resetMap();
         resetGame();
     }
 
