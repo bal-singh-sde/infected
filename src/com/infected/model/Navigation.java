@@ -2,6 +2,7 @@ package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.util.Animation;
+import com.infected.util.MusicPlayer;
 import com.infected.util.Pause;
 import com.infected.util.TextParser;
 
@@ -22,17 +23,26 @@ public class Navigation {
         }
     }
 
+    public static void updateNavigationData(String destination) {
+        Map.updateMap(Player.getCurrentLocation(), Location.getNextLocation(destination));
+        Player.setCurrentLocation(Location.getNextLocation(destination));
+        Player.raiseContaminationLevel(1);
+        npcInitialize();
+    }
+
     public static void go(String destination) {
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             if (node.get(Location.getNextLocation(destination)).get("street").asBoolean()) {
-                Player.setCurrentLocation(Location.getNextLocation(destination));
-                Player.raiseContaminationLevel(1);
-                npcInitialize();
+                MusicPlayer.playWalkSound();
+                updateNavigationData(destination);
             } else {
-                if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)){
-                    Player.setCurrentLocation(Location.getNextLocation(destination));
-                    Player.raiseContaminationLevel(1);
-                    npcInitialize();
+                if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)) {
+                    if (node.get(Location.getNextLocation(destination)).get("indoor").asBoolean()) {
+                        MusicPlayer.playDoorSound();
+                    } else {
+                        MusicPlayer.playWalkSound();
+                    }
+                    updateNavigationData(destination);
                 } else {
                     System.out.println("Current capacity of " + Location.getNextLocation(destination) + " is " + Location.currentCapacity(destination) + ". Max capacity is " + Location.getMaxCapacity(Player.getCurrentLocation()));
                 }
@@ -49,10 +59,11 @@ public class Navigation {
         if (Player.getCurrentLocation().equals("clinic")) {
             Npc sharon = new Nurse();
             System.out.println(sharon.getGreeting() + " " + sharon.getDialogue());
-            Pause.pause();
+            MusicPlayer.playHospitalSound();
+            Pause.pause(3000);
             System.out.println("she looks and says......");
             System.out.println("Oh my! You look ill let me help you");
-            Pause.pause();
+            Pause.pause(3000);
             Nurse.giveShot();
         }
     }
@@ -61,7 +72,7 @@ public class Navigation {
         if (Player.getCurrentLocation().equals("groceryStore")) {
             Npc jack = new StoreClerk();
             System.out.println(jack.getGreeting() + " " + jack.getDialogue());
-            Pause.pause();
+            Pause.pause(3000);
             StoreClerk.cough();
         }
     }

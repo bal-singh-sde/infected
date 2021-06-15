@@ -58,6 +58,14 @@ public class TextParser {
         return objectMapper.convertValue(jsonNode, new TypeReference<List<String>>(){});
     }
 
+    public static List<Integer> jsonNodeToListInteger(JsonNode jsonNode) {
+        return objectMapper.convertValue(jsonNode, new TypeReference<List<Integer>>(){});
+    }
+
+    public static int[] jsonNodeToArrayInt(JsonNode jsonNode) {
+        return jsonNodeToListInteger(jsonNode).stream().mapToInt(i->i).toArray();
+    }
+
     public static LinkedHashMap<String, LinkedHashMap<String, Integer>> jsonNodeToHashMapNested(JsonNode jsonNode) {
         return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, LinkedHashMap<String, Integer>>>() {});
     }
