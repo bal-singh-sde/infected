@@ -24,11 +24,13 @@ public class Navigation {
     public static void go(String destination) {
         if (node.get(Player.getCurrentLocation()).get("nav").has(destination)) {
             if (node.get(Location.getNextLocation(destination)).get("street").asBoolean()) {
+                Map.updateMap(Player.getCurrentLocation(), Location.getNextLocation(destination));
                 Player.setCurrentLocation(Location.getNextLocation(destination));
                 Player.raiseContaminationLevel(1);
                 npcInitialize();
             } else {
                 if (Location.currentCapacity(destination) <= Location.getMaxCapacityOfNextLocation(destination)){
+                    Map.updateMap(Player.getCurrentLocation(), Location.getNextLocation(destination));
                     Player.setCurrentLocation(Location.getNextLocation(destination));
                     Player.raiseContaminationLevel(1);
                     npcInitialize();
