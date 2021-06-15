@@ -1,6 +1,7 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Animation;
 import com.infected.util.TextParser;
 
 import java.io.File;
@@ -50,6 +51,7 @@ public class Game {
 
     public static void clearGameData() {
         Player.resetPlayer();
+        Animation.resetAnimation();
         resetGame();
     }
 

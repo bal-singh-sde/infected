@@ -61,4 +61,14 @@ public class TextParser {
     public static LinkedHashMap<String, LinkedHashMap<String, Integer>> jsonNodeToHashMapNested(JsonNode jsonNode) {
         return objectMapper.convertValue(jsonNode, new TypeReference<LinkedHashMap<String, LinkedHashMap<String, Integer>>>() {});
     }
+
+    public static JsonNode getNode(String jsonSource) {
+        File fileSource = new File(jsonSource);
+        try {
+            return TextParser.parse(fileSource);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

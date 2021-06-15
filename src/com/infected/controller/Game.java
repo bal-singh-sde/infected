@@ -2,6 +2,7 @@ package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.*;
+import com.infected.util.Animation;
 import com.infected.util.TextParser;
 import com.infected.util.TextScanner;
 import static com.infected.model.Game.*;
@@ -55,15 +56,20 @@ public class Game {
                 Player.useItem(commandArray[1]);
             } else if ("quarantine".equals(commandArray[0])) {
                 Player.quarantine();
-            } else {
+            }
+            else if ("no".equals(commandArray[0])) {
+                if ("animation".equals(commandArray[1])) {
+                    Animation.turnOffAnimation();
+                }
+            } else
+             {
                 System.out.println("Invalid command");
             }
         }
     }
 
     private void printIntro() {
-        System.out.println("# Welcome to the World of INFECTED!!!!!!!");
-        System.out.println("\nA new virus have spread around the community and there are chances that you can get infected.");
+        Animation.printBox("Welcome to the World of INFECTED!!!!!!!","A new virus have spread around the community and there are chances that you can get infected.");
         Navigation.routes();
     }
 
