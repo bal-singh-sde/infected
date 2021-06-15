@@ -2,17 +2,13 @@ package com.infected.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.model.*;
-import com.infected.util.Animation;
-import com.infected.util.MusicPlayer;
-import com.infected.util.Pause;
-import com.infected.util.TextParser;
-import com.infected.util.TextScanner;
-
-import static com.infected.model.Game.*;
+import com.infected.util.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+
+import static com.infected.model.Game.*;
 
 public class Game {
     public void start() {
@@ -28,11 +24,11 @@ public class Game {
 
             if ("quit".equals(commandArray[0])) {
                 System.exit(0);
-            } else if (Player.getContaminationLevel() >= 20) {
+            } else if (Player.getContaminationLevel() >= 19) {
                 MusicPlayer.loseSound();
                 Pause.pause(6000);
                 System.out.println("Sorry!!!You lost!!! Please try again.");
-                com.infected.model.Game.clearGameData();
+                clearGameData();
                 System.exit(0);
             } else if ("help".equals(commandArray[0])) {
                 help(Player.getCurrentLocation());

@@ -27,6 +27,7 @@ public class Nurse extends Npc {
         Pause.pause(6000);
         Player.setContaminationLevel(0);
         System.out.println("You won the game!");
+        Game.clearGameData();
         System.exit(0);
     }
 
