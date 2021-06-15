@@ -1,6 +1,7 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Animation;
 import com.infected.util.MusicPlayer;
 import com.infected.util.Pause;
 
@@ -26,7 +27,7 @@ public class StoreClerk extends Npc {
         MusicPlayer.playCoughSound();
         System.out.println("........ACHOO!!");
         Player.raiseContaminationLevel(3);
-        System.out.println("Sorry..excuse me");
+        Animation.newPrint("Sorry..excuse me");
         Pause.pause(3000);
     }
 }

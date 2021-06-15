@@ -1,6 +1,7 @@
 package com.infected.model;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.infected.util.Animation;
 import com.infected.util.MusicPlayer;
 import com.infected.util.Pause;
 
@@ -26,7 +27,7 @@ public class Nurse extends Npc {
         MusicPlayer.winSound();
         Pause.pause(6000);
         Player.setContaminationLevel(0);
-        System.out.println("You won the game!");
+        Animation.newPrint("You won the game!");
         Game.clearGameData();
         System.exit(0);
     }

@@ -58,11 +58,11 @@ public class Navigation {
     public static void nurseInitialize() {
         if (Player.getCurrentLocation().equals("clinic")) {
             Npc sharon = new Nurse();
-            System.out.println(sharon.getGreeting() + " " + sharon.getDialogue());
+            Animation.newPrint(sharon.getGreeting() + " " + sharon.getDialogue());
             MusicPlayer.playHospitalSound();
             Pause.pause(3000);
-            System.out.println("she looks and says......");
-            System.out.println("Oh my! You look ill let me help you");
+            Animation.newPrint("she looks and says......");
+            Animation.newPrint("Oh my! You look ill let me help you");
             Pause.pause(3000);
             Nurse.giveShot();
         }
@@ -71,7 +71,7 @@ public class Navigation {
     public static void clerkInitialize() {
         if (Player.getCurrentLocation().equals("groceryStore")) {
             Npc jack = new StoreClerk();
-            System.out.println(jack.getGreeting() + " " + jack.getDialogue());
+            Animation.newPrint(jack.getGreeting() + " " + jack.getDialogue());
             Pause.pause(3000);
             StoreClerk.cough();
         }
