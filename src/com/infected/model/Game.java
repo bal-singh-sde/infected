@@ -51,6 +51,7 @@ public class Game {
 
     public static void clearGameData() {
         Player.resetPlayer();
+        Map.resetMap();
         Animation.resetAnimation();
         resetGame();
     }

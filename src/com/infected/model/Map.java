@@ -1,6 +1,8 @@
 package com.infected.model;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.infected.util.AsciiParser;
+import com.infected.util.TextParser;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +12,7 @@ import java.util.List;
 
 public class Map {
     private static final Path path = Path.of("./ascii/", "map.txt");
+    private static final Path pathDefault = Path.of("./ascii/default", "map.txt");
     private static final File file = new File("./ascii/map.txt");
 
     public static void readMap() {
@@ -58,5 +61,14 @@ public class Map {
             index++;
         }
         return newAsciiLines;
+    }
+
+    public static void resetMap() {
+        try {
+            List<String> asciiLines = AsciiParser.parse(pathDefault);
+            AsciiParser.write(file, asciiLines);
+        } catch (IOException ioException) {
+            System.out.println("There was an error resetting the map");
+        }
     }
 }
